@@ -1,0 +1,18 @@
+package com.hzy.alchemycraft.recipes;
+
+import net.minecraft.init.Blocks;
+
+public class MaterialRecipes {
+	
+	public static String[]	Earth={"dirt","sand","soul_sand","sandstone","gravel","end_stone","cobblestone","stone","netherrack","obsidian","lava"};
+	public static String[] 	Wood ={"brown_mushroom","red_mushroom","wheat_seeds","pumpkin_seeds","melon_seeds","nether_wart","potato","carrot","apple","tallgrass","waterlily","vine","yellow_flower","red_flower","double_plant","cactus","reeds","sapling","leaves","log"};
+	public static String[]	Metal={"clay","stained_hardened_clay","coal","quartz","iron_ingot","redstone","gunpowder","diamond","emerald"};
+	public static String[]	Organ={"sugar","string","feather","web","wool","slime_ball","prismarine_shard","prismarine_crystals","egg","rotten_flesh","bone","rabbit_hide","leather","fish","rabbit_foot","rabbit","chicken","mutton","porkchop","beef","blaze_rod","ender_pearl","ghast_tear","nether_star","dragon_egg"};
+	public static String[]	Water={"snow","ice","water","milk_bucket"};
+	//元素：陰，陽，火，土，木，水，金
+	//結構：晶體，錠，粉塵，植物，種子，磚，塊
+	public MaterialRecipes(){
+		
+	}
+	
+}

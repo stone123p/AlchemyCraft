@@ -1,0 +1,77 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+    "particle": "alchemycraft:blocks/AlchemyTable_bottom",
+        "side": "alchemycraft:blocks/AlchemyTable_bottom",
+        "bottom": "alchemycraft:blocks/EndStone"
+    },
+    "display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "from": [16,0,16],
+            "to": [14,8,0],
+            "faces": {
+                "up": {"texture": "#side"},
+                "down": {"texture": "#side"},
+                "west": {"texture": "#side"},
+                "east": {"texture": "#side"},
+                "north": {"texture": "#side"},
+                "south": {"texture": "#side"}
+            }
+        },
+        {
+            "from": [2,0,16],
+            "to": [0,8,0],
+            "faces": {
+                "up": {"texture": "#side"},
+                "down": {"texture": "#side"},
+                "west": {"texture": "#side"},
+                "east": {"texture": "#side"},
+                "north": {"texture": "#side"},
+                "south": {"texture": "#side"}
+            }
+        },
+        {
+            "from": [14,0,16],
+            "to": [2,8,14],
+            "faces": {
+                "up": {"texture": "#side"},
+                "down": {"texture": "#side"},
+                "west": {"texture": "#side"},
+                "east": {"texture": "#side"},
+                "north": {"texture": "#side"},
+                "south": {"texture": "#side"}
+            }
+        },  
+        {
+            "from": [14,0,2],
+            "to": [2,8,0],
+            "faces": {
+                "up": {"texture": "#side"},
+                "down": {"texture": "#side"},
+                "west": {"texture": "#side"},
+                "east": {"texture": "#side"},
+                "north": {"texture": "#side"},
+                "south": {"texture": "#side"}
+            }
+        },  
+        {
+            "from": [14,0,14],
+            "to": [2,2,2],
+            "faces": {
+                "up": {"texture": "#bottom"},
+                "down": {"texture": "#bottom"},
+                "west": {"texture": "#bottom"},
+                "east": {"texture": "#bottom"},
+                "north": {"texture": "#bottom"},
+                "south": {"texture": "#bottom"}
+            }
+        }   
+    ]
+}

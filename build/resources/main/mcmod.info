@@ -1,0 +1,16 @@
+[
+{
+  "modid": "alchemycraft",
+  "name": "AlchemyCraft",
+  "description": "More ways to create material and potion.",
+  "version": "1.3.3",
+  "mcversion": "1.8.9 Forge",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["HZY"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

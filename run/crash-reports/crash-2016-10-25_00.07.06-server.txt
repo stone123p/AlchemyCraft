@@ -1,0 +1,113 @@
+---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 2016/10/25 上午 12:07
+Description: Colliding entity with block
+
+java.lang.ArrayIndexOutOfBoundsException: -3754
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.donwAlchemy(TileEntityACCauldron.java:111)
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.collideEntityItem(TileEntityACCauldron.java:41)
+	at com.hzy.alchemycraft.blocks.ACCauldron.onEntityCollidedWithBlock(ACCauldron.java:113)
+	at net.minecraft.entity.Entity.doBlockCollisions(Entity.java:917)
+	at net.minecraft.entity.Entity.moveEntity(Entity.java:843)
+	at net.minecraft.entity.item.EntityItem.onUpdate(EntityItem.java:108)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2011)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:725)
+	at net.minecraft.world.World.updateEntity(World.java:1976)
+	at net.minecraft.world.World.updateEntities(World.java:1805)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:560)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:777)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:681)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:159)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:548)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.donwAlchemy(TileEntityACCauldron.java:111)
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.collideEntityItem(TileEntityACCauldron.java:41)
+	at com.hzy.alchemycraft.blocks.ACCauldron.onEntityCollidedWithBlock(ACCauldron.java:113)
+
+-- Block being collided with --
+Details:
+	Block: alchemycraft:ACCauldron
+	Block location: World: (-1152,4,633), Chunk: (at 0,0,9 in -72,39; contains blocks -1152,0,624 to -1137,255,639), Region: (-3,1; contains chunks -96,32 to -65,63, blocks -1536,0,512 to -1025,255,1023)
+Stacktrace:
+	at net.minecraft.entity.Entity.doBlockCollisions(Entity.java:917)
+
+-- Entity being checked for collision --
+Details:
+	Entity Type: Item (net.minecraft.entity.item.EntityItem)
+	Entity ID: 38896
+	Entity Name: item.item.beefRaw
+	Entity's Exact location: -1151.51, 4.06, 633.81
+	Entity's Block location: -1152.00,4.00,633.00 - World: (-1152,4,633), Chunk: (at 0,0,9 in -72,39; contains blocks -1152,0,624 to -1137,255,639), Region: (-3,1; contains chunks -96,32 to -65,63, blocks -1536,0,512 to -1025,255,1023)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Rider: ~~ERROR~~ NullPointerException: null
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.entity.Entity.moveEntity(Entity.java:843)
+	at net.minecraft.entity.item.EntityItem.onUpdate(EntityItem.java:108)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2011)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:725)
+	at net.minecraft.world.World.updateEntity(World.java:1976)
+
+-- Entity being ticked --
+Details:
+	Entity Type: Item (net.minecraft.entity.item.EntityItem)
+	Entity ID: 38896
+	Entity Name: item.item.beefRaw
+	Entity's Exact location: -1151.51, 4.06, 633.81
+	Entity's Block location: -1152.00,4.00,633.00 - World: (-1152,4,633), Chunk: (at 0,0,9 in -72,39; contains blocks -1152,0,624 to -1137,255,639), Region: (-3,1; contains chunks -96,32 to -65,63, blocks -1536,0,512 to -1025,255,1023)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Rider: ~~ERROR~~ NullPointerException: null
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:1805)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:560)
+
+-- Affected level --
+Details:
+	Level name: 新的世界
+	All players: 1 total; [EntityPlayerMP['Player215'/112, l='新的世界', x=-1151.59, y=4.00, z=632.38]]
+	Chunk stats: ServerChunkCache: 781 Drop: 0
+	Level seed: 7806022244070960071
+	Level generator: ID 01 - flat, ver 0. Features enabled: true
+	Level generator options: 
+	Level spawn location: -1150.00,4.00,682.00 - World: (-1150,4,682), Chunk: (at 2,0,10 in -72,42; contains blocks -1152,0,672 to -1137,255,687), Region: (-3,1; contains chunks -96,32 to -65,63, blocks -1536,0,512 to -1025,255,1023)
+	Level time: 111888 game time, 9978 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 1 (now: false), thunder time: 1 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:777)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:681)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:159)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:548)
+	at java.lang.Thread.run(Thread.java:745)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 551446008 bytes (525 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player215'/112, l='新的世界', x=-1151.59, y=4.00, z=632.38]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

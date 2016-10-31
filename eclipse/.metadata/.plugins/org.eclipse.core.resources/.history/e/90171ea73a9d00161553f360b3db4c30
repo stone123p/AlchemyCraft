@@ -1,0 +1,229 @@
+package com.hzy.alchemycraft.tileentity;
+
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
+import com.hzy.alchemycraft.items.ACItems;
+import com.hzy.alchemycraft.items.ItemPotion;
+import com.hzy.alchemycraft.recipes.AlchemyRecipes;
+
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ITickable;
+import scala.Int;
+
+public class TileEntityACCauldron extends TileEntity implements  ITickable{
+
+	
+	//public ItemStack[][] recipes={{new ItemStack(Items.diamond,2)},{new ItemStack(Items.beef,1),new ItemStack(Items.iron_ingot,1)},{new ItemStack(ACItems.GrowthOilBottle,4),new ItemStack(ACItems.FireOilBottle,4)}};
+	public ArrayList<ItemStack> potions = new ArrayList();
+	public ArrayList<ItemStack[][]> recipies=new ArrayList();
+	public int N=0;
+	public int heat=0;
+	public boolean canAlchemy=false;
+	public boolean f=false;
+	public Random random =new Random();
+	public int WaterLevel=0;
+	public EntityPlayer player;
+	
+	public boolean collideEntityItem(ArrayList<EntityItem> entityItem){
+		new AlchemyRecipes();
+		ArrayList<ItemStack> products = new ArrayList();
+		for(ItemStack[][] r:AlchemyRecipes.recipies){
+			products=findBasicRecipes(entityItem,potions,r);
+			if(products!=null){ 
+				System.out.println(Arrays.toString(products.toArray())+":"+Arrays.toString(entityItem.toArray()));
+				return DoAlchemy(products,r, entityItem);
+				
+			}
+		}
+		if(AlchemyRecipes.newRecipes( entityItem, potions)!=null){
+			products=findBasicRecipes(entityItem,potions,AlchemyRecipes.newRecipes(entityItem, potions));
+			if(products!=null){ 
+				return DoAlchemy(products,AlchemyRecipes.newRecipes(entityItem, potions), entityItem);
+			}
+		}
+		f=false;
+		return false;
+	}
+	
+	public boolean DoAlchemy(ArrayList<ItemStack> products,ItemStack[][] r,ArrayList<EntityItem> entityItem){
+		if(this.worldObj.isRemote&&f){
+			dePotion(products,potions,new int[]{r[0].length+r[1].length,r[2].length});
+			f=false;
+		}
+		if(!this.worldObj.isRemote&&f){
+			for(int i=0;i<r[0].length;i++)this.worldObj.spawnEntityInWorld(new EntityItem(worldObj,pos.getX()+0.5f, pos.getY()+1,pos.getZ()+0.5f, products.get(i)));
+			
+			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), dePotion(products,potions,new int[]{r[0].length+r[1].length,r[2].length}),1);
+			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, 0);			
+			deMaterial(new int[]{r[0].length,r[2].length},products,entityItem);
+			f=false;
+			worldObj.playSoundAtEntity(this.player, "random.fizz",1F, 4.0F);
+		}
+		return true;
+	}
+	public int dePotion(ArrayList<ItemStack> products,ArrayList<ItemStack> potionsm ,int[] RSize){
+		int WL=0;
+		for(int i=0;i<RSize[1];i++){
+			for(ItemStack P:potionsm){
+				if(P.getItem()==products.get(RSize[0]+i).getItem()){
+					P.stackSize=P.stackSize - products.get(RSize[0]+i).stackSize;
+					WL=WL+products.get(RSize[0]+i).stackSize;
+				}
+			}
+		}		
+		return WL;
+	}
+	
+	public void deMaterial(int[] index,ArrayList<ItemStack> products,ArrayList<EntityItem> entityItem){
+		
+		for(int j=0;j<products.size()-index[0]-index[1];j++)
+			for(int i=0;i<entityItem.size();i++){
+				if(products.get(index[0]+j)!=null)
+					if(entityItem.get(i).getEntityItem().getItem()==ACItems.PhilosopherStone){
+						entityItem.get(i).getEntityItem().setItemDamage(entityItem.get(i).getEntityItem().getItemDamage()+10);
+					}else 
+						if(entityItem.get(i).getEntityItem().getItem()==products.get(index[0]+j).getItem()&&entityItem.get(i).getEntityItem().getMetadata()==products.get(index[0]+j).getMetadata())
+							entityItem.get(i).getEntityItem().stackSize=entityItem.get(i).getEntityItem().stackSize - products.get(index[0]+j).stackSize;
+			}
+	}
+	public ArrayList<ItemStack> findBasicRecipes(ArrayList<EntityItem> entityItem,ArrayList<ItemStack>  Psp,ItemStack[][] recipes){
+		int goal=recipes[1].length+recipes[2].length;
+		ArrayList<ItemStack> products = new ArrayList();
+		
+		ArrayList<Item>M=new ArrayList();
+		ArrayList<Item>P=new ArrayList();
+		int[] Msize=new int[entityItem.size()];
+		int[] Mmeta=new int[entityItem.size()];
+		int[] Psize=new int[Psp.size()];
+		
+		int index=0;
+		int im=0;
+		for(EntityItem item:entityItem){
+			M.add(item.getEntityItem().getItem());
+			Msize[im]=item.getEntityItem().stackSize;
+			Mmeta[im]=item.getEntityItem().getMetadata();
+			im++;
+		}
+		int ip=0;
+		for(ItemStack potion:Psp){
+			P.add(potion.getItem());
+			Psize[ip]=potion.stackSize;
+			ip++;
+			
+		}
+		int[] Q=new int[entityItem.size()+Psp.size()];
+		int[] r=new int[entityItem.size()+Psp.size()];
+		for(int i=0;i<recipes[1].length;i++){
+			if(M.indexOf(recipes[1][i].getItem())!=-1)
+				if(Mmeta[M.indexOf(recipes[1][i].getItem())]==recipes[1][i].getMetadata()||recipes[1][i].getItem()==ACItems.PhilosopherStone){
+					Q[index]=Msize[M.indexOf(recipes[1][i].getItem())]/recipes[1][i].stackSize;
+					r[index]=recipes[1][i].stackSize;
+					index++;
+				}
+		}
+		for(int i=0;i<recipes[2].length;i++){
+			if(P.indexOf(recipes[2][i].getItem())!=-1){
+				Q[index]=Psize[P.indexOf(recipes[2][i].getItem())]/recipes[2][i].stackSize;
+				r[index]=recipes[2][i].stackSize;
+				index++;
+			}
+		}
+		if(goal>=1){
+			int[] q=new int[goal];
+			if(Q.length>=goal)
+				for(int i=0;i<goal;i++)q[i]=Q[i];
+			Arrays.sort(q);	
+			if(q[0]>=1&&index==goal){
+				for(int j=0;j<recipes[0].length;j++){
+					ItemStack S=new ItemStack(recipes[0][j].copy().getItem(),recipes[0][j].copy().stackSize*q[0],recipes[0][j].copy().getMetadata());
+					if(recipes[0][j].isItemEnchanted()){
+						NBTTagList nbttaglist = recipes[0][j].getEnchantmentTagList();
+						
+						S.addEnchantment(, 1);
+						
+					}
+					products.add(S);
+				}
+			
+				for(im=0;im<recipes[1].length;im++){
+					products.add(new ItemStack(recipes[1][im].copy().getItem(),q[0]*r[im],recipes[1][im].copy().getMetadata()));		
+				}
+			
+				for(ip=0;ip<recipes[2].length;ip++){
+					products.add(new ItemStack(recipes[2][ip].copy().getItem(),q[0]*r[ip+recipes[1].length]));
+				}
+			
+				return  products;
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	public String WitchSide(boolean s){
+		return s?"client":"server";
+	}
+	@Override
+	public void update() {
+		if(this.worldObj.getBlockState(this.getPos().down()).getBlock().getMaterial()==Material.fire && this.WaterLevel>0){
+			if(heat<120){
+				heat++;
+				this.canAlchemy=false;
+			}else{
+				heat=120;
+				this.canAlchemy=true;
+			}
+		}else{
+			heat=0;
+			this.canAlchemy=false;
+		}
+		ArrayList<EntityItem> items = (ArrayList<EntityItem>) worldObj.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.add(0, 0, 0), pos.add(1, 1, 1)));
+		if(!items.isEmpty() && this.canAlchemy && f){
+			collideEntityItem(items);
+			
+		}
+		if(items.isEmpty()&&f)f=false;
+	}
+	
+	public void CanAlchemy(boolean d){
+		this.canAlchemy=d;
+	}
+
+	public void addPotion(Item item) {
+		int j=0;
+		for(int i=0;i<potions.size();i++){
+			if(potions.get(i).getItem()==item){
+				potions.get(i).stackSize+=(getPotionMoleIndex(item)<8)?4:8;
+				j++;
+			}
+		}
+		if(j==0){
+			potions.add(new ItemStack(item,(getPotionMoleIndex(item)<8)?4:8));
+		}		
+	}
+	
+	public int getPotionMoleIndex(Item potion){
+		return Item.getIdFromItem(potion)-Item.getIdFromItem(ACItems.MinorHealingPotion);
+	}
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="net.minecraft.entity.monster.EntityPigZombie"/>
+<fullyQualifiedTypeName name="net.minecraft.entity.passive.EntityPig"/>
+<fullyQualifiedTypeName name="net.minecraft.client.resources.model.ModelBakery"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.ItemMeshDefinition"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.block.statemap.StateMapperBase"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.BlockFluidFinite"/>
+<fullyQualifiedTypeName name="net.minecraft.util.ResourceLocation"/>
+<fullyQualifiedTypeName name="net.minecraft.block.material.MapColor"/>
+<fullyQualifiedTypeName name="net.minecraft.block.material.MaterialLiquid"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.fluids.ModFluids"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.IFluidBlock"/>
+<fullyQualifiedTypeName name="net.minecraft.block.Block"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.Tessellator"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.renderer.RenderAlchemyPot"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.tileentity.TileEntityAlchemyPot"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.texture.TextureAtlasSprite"/>
+<fullyQualifiedTypeName name="org.lwjgl.opengl.GL11"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.vertex.DefaultVertexFormats"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.GlStateManager"/>
+<fullyQualifiedTypeName name="net.minecraft.client.renderer.texture.TextureMap"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.fluids.FluidProdigy"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.fluids.BlockFluidProdigy"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.items.BucketProdigyWater"/>
+<fullyQualifiedTypeName name="net.minecraft.block.material.Material"/>
+<fullyQualifiedTypeName name="net.minecraft.block.BlockCauldron"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.renderer.RenderACCauldron"/>
+<fullyQualifiedTypeName name="net.minecraft.block.BlockContainer"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.tileentity.TileEntityACCauldron"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.Fluid"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.BlockFluidClassic"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.FluidRegistry"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fml.common.registry.GameRegistry"/>
+<fullyQualifiedTypeName name="net.minecraft.item.ItemBucket"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.AlchemyCraft"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.FluidContainerRegistry"/>
+<fullyQualifiedTypeName name="net.minecraftforge.fluids.FluidStack"/>
+<fullyQualifiedTypeName name="net.minecraft.item.ItemStack"/>
+<fullyQualifiedTypeName name="net.minecraft.init.Items"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.fluids.ACFluids"/>
+<fullyQualifiedTypeName name="com.hzy.alchemycraft.model.ModelCauldron"/>
+<fullyQualifiedTypeName name="net.minecraft.block.BlockSapling"/>
+</qualifiedTypeNameHistroy>

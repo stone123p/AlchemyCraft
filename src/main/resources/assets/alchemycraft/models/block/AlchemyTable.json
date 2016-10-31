@@ -1,0 +1,23 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+    "particle": "alchemycraft:blocks/AlchemyTable_top",
+        "top": "alchemycraft:blocks/AlchemyTable_top",
+        "side": "alchemycraft:blocks/AlchemyTable_side",
+        "bottom": "alchemycraft:blocks/AlchemyTable_bottom"
+    },
+    "elements": [
+        {
+            "from": [0,0,0],
+            "to": [16,16,16],
+            "faces": {
+                "up": {"texture": "#top"},
+                "down": {"texture": "#bottom"},
+                "west": {"texture": "#side"},
+                "east": {"texture": "#side"},
+                "north": {"texture": "#side"},
+                "south": {"texture": "#side"}
+            }
+        }
+    ]
+}

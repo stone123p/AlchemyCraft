@@ -1,0 +1,107 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 2016/10/30 下午 4:23
+Description: Unexpected error
+
+java.lang.ArithmeticException: / by zero
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.addPotionMole(TileEntityACCauldron.java:248)
+	at com.hzy.alchemycraft.blocks.ACCauldron.onBlockActivated(ACCauldron.java:85)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.onPlayerRightClick(PlayerControllerMP.java:412)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1569)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:2123)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1080)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.addPotionMole(TileEntityACCauldron.java:248)
+	at com.hzy.alchemycraft.blocks.ACCauldron.onBlockActivated(ACCauldron.java:85)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.onPlayerRightClick(PlayerControllerMP.java:412)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1569)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player895'/166, l='MpServer', x=366.22, y=4.00, z=-1232.66]]
+	Chunk stats: MultiplayerChunkCache: 600, 600
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 408.00,4.00,-1227.00 - World: (408,4,-1227), Chunk: (at 8,0,5 in 25,-77; contains blocks 400,0,-1232 to 415,255,-1217), Region: (0,-3; contains chunks 0,-96 to 31,-65, blocks 0,0,-1536 to 511,255,-1025)
+	Level time: 658376 game time, 658376 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 61 total; [EntitySheep['綿羊'/12, l='MpServer', x=287.06, y=4.00, z=-1269.09], EntitySheep['綿羊'/16, l='MpServer', x=290.63, y=4.00, z=-1285.16], EntityChicken['雞'/17, l='MpServer', x=293.41, y=4.00, z=-1247.66], EntityChicken['雞'/19, l='MpServer', x=289.66, y=4.00, z=-1217.69], EntitySheep['綿羊'/20, l='MpServer', x=301.66, y=4.00, z=-1225.22], EntityChicken['雞'/22, l='MpServer', x=291.28, y=4.00, z=-1202.56], EntitySheep['綿羊'/26, l='MpServer', x=313.19, y=4.00, z=-1309.38], EntityRabbit['兔子'/27, l='MpServer', x=304.78, y=4.00, z=-1287.16], EntitySheep['綿羊'/28, l='MpServer', x=318.56, y=4.00, z=-1212.84], EntitySheep['綿羊'/30, l='MpServer', x=321.03, y=4.00, z=-1311.94], EntitySheep['綿羊'/31, l='MpServer', x=328.97, y=4.00, z=-1270.09], EntitySheep['綿羊'/32, l='MpServer', x=326.13, y=4.00, z=-1275.28], EntitySheep['綿羊'/33, l='MpServer', x=334.00, y=4.00, z=-1276.09], EntitySheep['綿羊'/34, l='MpServer', x=338.97, y=4.00, z=-1229.97], EntityChicken['雞'/35, l='MpServer', x=326.53, y=4.00, z=-1245.34], EntityItem['item.item.egg'/36, l='MpServer', x=326.19, y=4.00, z=-1245.28], EntitySheep['綿羊'/37, l='MpServer', x=333.81, y=4.00, z=-1209.88], EntityCow['乳牛'/43, l='MpServer', x=351.81, y=4.00, z=-1274.44], EntitySheep['綿羊'/44, l='MpServer', x=355.81, y=4.00, z=-1274.28], EntitySheep['綿羊'/45, l='MpServer', x=341.09, y=4.00, z=-1262.16], EntityCow['乳牛'/46, l='MpServer', x=356.84, y=4.00, z=-1191.03], EntitySheep['綿羊'/47, l='MpServer', x=341.75, y=4.00, z=-1186.81], EntitySheep['綿羊'/48, l='MpServer', x=337.06, y=4.00, z=-1177.88], EntitySheep['綿羊'/52, l='MpServer', x=352.84, y=4.00, z=-1295.16], EntityPig['豬'/53, l='MpServer', x=355.78, y=4.00, z=-1183.13], EntitySheep['綿羊'/54, l='MpServer', x=369.78, y=4.00, z=-1170.69], EntitySheep['綿羊'/55, l='MpServer', x=363.13, y=4.00, z=-1184.88], EntitySheep['綿羊'/60, l='MpServer', x=377.78, y=4.00, z=-1222.59], EntitySheep['綿羊'/61, l='MpServer', x=379.75, y=4.00, z=-1193.81], EntitySheep['綿羊'/62, l='MpServer', x=389.09, y=4.00, z=-1202.97], EntityChicken['雞'/63, l='MpServer', x=369.31, y=4.00, z=-1174.47], EntitySheep['綿羊'/65, l='MpServer', x=372.16, y=4.00, z=-1179.16], EntityPig['豬'/66, l='MpServer', x=368.13, y=4.00, z=-1164.09], EntitySheep['綿羊'/70, l='MpServer', x=388.63, y=4.00, z=-1274.53], EntityRabbit['兔子'/71, l='MpServer', x=399.91, y=4.00, z=-1275.84], EntitySheep['綿羊'/72, l='MpServer', x=390.78, y=4.00, z=-1276.41], EntitySheep['綿羊'/73, l='MpServer', x=387.13, y=4.00, z=-1263.09], EntitySheep['綿羊'/74, l='MpServer', x=393.56, y=4.00, z=-1271.78], EntitySheep['綿羊'/75, l='MpServer', x=388.94, y=4.00, z=-1191.13], EntitySheep['綿羊'/76, l='MpServer', x=396.06, y=4.00, z=-1190.09], EntitySheep['綿羊'/77, l='MpServer', x=396.97, y=4.00, z=-1195.09], EntityChicken['雞'/78, l='MpServer', x=393.31, y=4.00, z=-1173.47], EntityItem['item.item.egg'/79, l='MpServer', x=391.16, y=4.00, z=-1172.66], EntityPig['豬'/80, l='MpServer', x=393.03, y=4.00, z=-1152.94], EntitySheep['綿羊'/82, l='MpServer', x=404.13, y=4.00, z=-1281.38], EntitySheep['綿羊'/83, l='MpServer', x=401.94, y=4.00, z=-1267.00], EntitySheep['綿羊'/84, l='MpServer', x=403.91, y=4.00, z=-1278.09], EntitySheep['綿羊'/85, l='MpServer', x=397.13, y=4.00, z=-1241.38], EntitySheep['綿羊'/86, l='MpServer', x=412.81, y=4.00, z=-1198.75], EntitySheep['綿羊'/87, l='MpServer', x=405.72, y=4.00, z=-1199.22], EntityPig['豬'/88, l='MpServer', x=407.03, y=4.00, z=-1178.91], EntityRabbit['兔子'/91, l='MpServer', x=426.31, y=4.00, z=-1302.22], EntityChicken['雞'/92, l='MpServer', x=431.47, y=4.00, z=-1290.63], EntitySheep['綿羊'/94, l='MpServer', x=431.00, y=4.00, z=-1266.00], EntitySheep['綿羊'/95, l='MpServer', x=420.59, y=4.00, z=-1244.84], EntityHorse['馬'/96, l='MpServer', x=424.25, y=4.00, z=-1227.28], EntityRabbit['兔子'/97, l='MpServer', x=425.25, y=4.00, z=-1198.41], EntitySheep['綿羊'/98, l='MpServer', x=422.97, y=4.00, z=-1159.66], EntityCow['乳牛'/99, l='MpServer', x=422.75, y=4.00, z=-1161.28], EntityPlayerSP['Player895'/166, l='MpServer', x=366.22, y=4.00, z=-1232.66], EntityRabbit['兔子'/107, l='MpServer', x=446.56, y=4.00, z=-1309.13]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:409)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 656309824 bytes (625 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 繁體中文 (台灣)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

@@ -1,0 +1,111 @@
+---- Minecraft Crash Report ----
+// I'm sorry, Dave.
+
+Time: 2016/10/20 下午 2:03
+Description: Rendering screen
+
+java.lang.ArrayIndexOutOfBoundsException: 67
+	at com.hzy.alchemycraft.gui.GuiACBook.SelectDistill(GuiACBook.java:169)
+	at com.hzy.alchemycraft.gui.GuiACBook.drawScreen(GuiACBook.java:95)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:312)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1157)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1107)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.hzy.alchemycraft.gui.GuiACBook.SelectDistill(GuiACBook.java:169)
+	at com.hzy.alchemycraft.gui.GuiACBook.drawScreen(GuiACBook.java:95)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:312)
+
+-- Screen render details --
+Details:
+	Screen name: com.hzy.alchemycraft.gui.GuiACBook
+	Mouse location: Scaled: (266, 185). Absolute: (532, 109)
+	Screen size: Scaled: (427, 240). Absolute: (854, 480). Scale factor of 2
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player260'/88, l='MpServer', x=-237.39, y=67.00, z=51.98]]
+	Chunk stats: MultiplayerChunkCache: 460, 460
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: -240.00,64.00,112.00 - World: (-240,64,112), Chunk: (at 0,4,0 in -15,7; contains blocks -240,0,112 to -225,255,127), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Level time: 10818 game time, 10818 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 39 total; [EntityBat['蝙蝠'/64, l='MpServer', x=-216.38, y=55.10, z=50.56], EntityPig['猪'/67, l='MpServer', x=-205.09, y=67.00, z=-8.94], EntityPig['猪'/68, l='MpServer', x=-199.06, y=64.00, z=-9.07], EntityPig['猪'/69, l='MpServer', x=-205.03, y=66.00, z=-4.00], EntityItem['item.item.arrow'/70, l='MpServer', x=-198.88, y=10.00, z=10.88], EntityChicken['鸡'/71, l='MpServer', x=-201.69, y=66.00, z=3.50], EntityItem['item.item.egg'/72, l='MpServer', x=-201.91, y=66.00, z=3.63], EntityBat['蝙蝠'/73, l='MpServer', x=-196.38, y=39.02, z=61.77], EntityBat['蝙蝠'/74, l='MpServer', x=-202.25, y=54.10, z=65.72], EntityBat['蝙蝠'/81, l='MpServer', x=-191.56, y=22.10, z=22.25], EntityBat['蝙蝠'/82, l='MpServer', x=-192.75, y=48.92, z=54.47], EntityBat['蝙蝠'/83, l='MpServer', x=-171.49, y=15.33, z=9.34], EntityBat['蝙蝠'/84, l='MpServer', x=-166.85, y=23.28, z=96.53], EntityCow['牛'/23, l='MpServer', x=-309.93, y=63.00, z=14.41], EntityCow['牛'/33, l='MpServer', x=-299.53, y=63.00, z=16.22], EntityPlayerSP['Player260'/88, l='MpServer', x=-237.39, y=67.00, z=51.98], EntityItem['item.item.egg'/38, l='MpServer', x=-279.88, y=70.00, z=88.75], EntityChicken['鸡'/39, l='MpServer', x=-272.38, y=67.00, z=86.41], EntitySquid['鱿鱼'/41, l='MpServer', x=-259.81, y=60.14, z=46.34], EntitySquid['鱿鱼'/42, l='MpServer', x=-259.47, y=62.31, z=54.84], EntityChicken['鸡'/43, l='MpServer', x=-257.69, y=63.00, z=94.28], EntityItem['item.item.egg'/44, l='MpServer', x=-264.69, y=67.00, z=84.72], EntityChicken['鸡'/45, l='MpServer', x=-266.19, y=66.00, z=101.63], EntityItem['item.item.egg'/46, l='MpServer', x=-261.47, y=70.00, z=109.28], EntityItem['item.item.egg'/47, l='MpServer', x=-265.94, y=66.00, z=101.88], EntityBat['蝙蝠'/49, l='MpServer', x=-249.59, y=39.10, z=41.72], EntityBat['蝙蝠'/50, l='MpServer', x=-239.31, y=33.48, z=60.53], EntityBat['蝙蝠'/51, l='MpServer', x=-254.86, y=20.75, z=118.66], EntityChicken['鸡'/52, l='MpServer', x=-253.64, y=70.56, z=124.46], EntityBat['蝙蝠'/53, l='MpServer', x=-236.65, y=33.14, z=60.42], EntityBat['蝙蝠'/54, l='MpServer', x=-241.88, y=36.02, z=66.53], EntityChicken['鸡'/56, l='MpServer', x=-211.56, y=67.00, z=-4.38], EntityChicken['鸡'/57, l='MpServer', x=-209.81, y=66.00, z=-6.81], EntityPig['猪'/58, l='MpServer', x=-209.56, y=66.00, z=-6.00], EntityItem['item.item.egg'/59, l='MpServer', x=-209.41, y=66.00, z=-3.44], EntityItem['item.item.egg'/60, l='MpServer', x=-209.41, y=66.00, z=-6.88], EntityItem['item.item.egg'/61, l='MpServer', x=-214.59, y=68.00, z=-9.47], EntityChicken['鸡'/62, l='MpServer', x=-218.41, y=66.00, z=0.41], EntityBat['蝙蝠'/63, l='MpServer', x=-222.75, y=21.10, z=30.59]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:401)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 593335528 bytes (565 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

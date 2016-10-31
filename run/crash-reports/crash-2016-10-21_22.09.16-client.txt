@@ -1,0 +1,122 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 2016/10/21 下午 10:09
+Description: Tesselating block in world
+
+java.lang.ClassCastException: com.hzy.alchemycraft.fluids.BlockFluidProdigy cannot be cast to net.minecraft.block.BlockLiquid
+	at net.minecraft.client.renderer.BlockFluidRenderer.renderFluid(BlockFluidRenderer.java:38)
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:89)
+	at net.minecraft.client.renderer.chunk.RenderChunk.rebuildChunk(RenderChunk.java:194)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.processTask(ChunkRenderWorker.java:99)
+	at net.minecraft.client.renderer.chunk.ChunkRenderDispatcher.updateChunkNow(ChunkRenderDispatcher.java:141)
+	at net.minecraft.client.renderer.RenderGlobal.setupTerrain(RenderGlobal.java:931)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1340)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1111)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1107)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.client.renderer.BlockFluidRenderer.renderFluid(BlockFluidRenderer.java:38)
+
+-- Block being tesselated --
+Details:
+	Block type: ID #198 (tile.BlockFluidProdigy // com.hzy.alchemycraft.fluids.BlockFluidProdigy)
+	Block data value: 0 / 0x0 / 0b0000
+	Block location: World: (320,4,545), Chunk: (at 0,0,1 in 20,34; contains blocks 320,0,544 to 335,255,559), Region: (0,1; contains chunks 0,32 to 31,63, blocks 0,0,512 to 511,255,1023)
+Stacktrace:
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:89)
+	at net.minecraft.client.renderer.chunk.RenderChunk.rebuildChunk(RenderChunk.java:194)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.processTask(ChunkRenderWorker.java:99)
+	at net.minecraft.client.renderer.chunk.ChunkRenderDispatcher.updateChunkNow(ChunkRenderDispatcher.java:141)
+	at net.minecraft.client.renderer.RenderGlobal.setupTerrain(RenderGlobal.java:931)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1340)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player434'/32, l='MpServer', x=320.50, y=4.00, z=543.50]]
+	Chunk stats: MultiplayerChunkCache: 601, 601
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 327.00,4.00,551.00 - World: (327,4,551), Chunk: (at 7,0,7 in 20,34; contains blocks 320,0,544 to 335,255,559), Region: (0,1; contains chunks 0,32 to 31,63, blocks 0,0,512 to 511,255,1023)
+	Level time: 202 game time, 202 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 29 total; [EntityVillager['村民'/4, l='MpServer', x=256.50, y=5.00, z=560.50], EntitySlime['史莱姆'/24516, l='MpServer', x=361.50, y=4.47, z=501.34], EntityVillager['村民'/5, l='MpServer', x=256.50, y=5.00, z=569.50], EntityVillager['村民'/6, l='MpServer', x=256.50, y=5.00, z=583.50], EntityVillager['村民'/7, l='MpServer', x=256.50, y=5.00, z=584.50], EntityVillager['村民'/8, l='MpServer', x=255.81, y=4.00, z=607.41], EntityVillager['村民'/9, l='MpServer', x=252.50, y=5.00, z=605.78], EntityVillager['村民'/10, l='MpServer', x=256.47, y=5.00, z=615.56], EntityVillager['村民'/11, l='MpServer', x=264.50, y=5.00, z=567.50], EntityVillager['村民'/12, l='MpServer', x=264.50, y=5.00, z=568.50], EntityVillager['村民'/13, l='MpServer', x=262.72, y=5.00, z=581.47], EntityVillager['村民'/14, l='MpServer', x=272.50, y=5.00, z=593.50], EntityVillager['村民'/15, l='MpServer', x=275.50, y=5.00, z=599.50], EntityVillager['村民'/16, l='MpServer', x=264.66, y=5.00, z=611.31], EntityVillager['村民'/17, l='MpServer', x=266.22, y=5.00, z=618.31], EntitySlime['史莱姆'/30098, l='MpServer', x=361.20, y=4.50, z=522.28], EntityVillager['村民'/19, l='MpServer', x=280.50, y=5.00, z=592.50], EntityItem['item.tile.torch'/20, l='MpServer', x=288.19, y=4.00, z=598.09], EntityItem['item.tile.torch'/21, l='MpServer', x=283.56, y=5.00, z=603.38], EntityItem['item.tile.torch'/22, l='MpServer', x=284.16, y=6.00, z=604.16], EntityVillager['村民'/23, l='MpServer', x=281.41, y=4.00, z=609.22], EntityVillager['村民'/24, l='MpServer', x=286.50, y=5.00, z=610.50], EntityVillager['村民'/25, l='MpServer', x=294.50, y=5.00, z=621.50], EntityVillager['村民'/26, l='MpServer', x=321.50, y=5.00, z=598.50], EntityVillager['村民'/27, l='MpServer', x=320.69, y=5.00, z=621.38], EntitySlime['史莱姆'/40799, l='MpServer', x=311.34, y=5.16, z=590.31], EntityPlayerSP['Player434'/32, l='MpServer', x=320.50, y=4.00, z=543.50], EntitySlime['史莱姆'/16628, l='MpServer', x=281.91, y=4.00, z=501.38], EntitySlime['史莱姆'/5695, l='MpServer', x=319.77, y=4.50, z=614.14]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:401)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 613512752 bytes (585 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

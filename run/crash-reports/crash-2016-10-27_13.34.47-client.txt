@@ -1,0 +1,111 @@
+---- Minecraft Crash Report ----
+// Would you like a cupcake?
+
+Time: 2016/10/27 下午 1:34
+Description: Rendering screen
+
+java.lang.ArrayIndexOutOfBoundsException: 15
+	at com.hzy.alchemycraft.gui.GuiACBook.SelectHerbs(GuiACBook.java:143)
+	at com.hzy.alchemycraft.gui.GuiACBook.drawScreen(GuiACBook.java:94)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:312)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1157)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1107)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.hzy.alchemycraft.gui.GuiACBook.SelectHerbs(GuiACBook.java:143)
+	at com.hzy.alchemycraft.gui.GuiACBook.drawScreen(GuiACBook.java:94)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:312)
+
+-- Screen render details --
+Details:
+	Screen name: com.hzy.alchemycraft.gui.GuiACBook
+	Mouse location: Scaled: (271, 193). Absolute: (543, 93)
+	Screen size: Scaled: (427, 240). Absolute: (854, 480). Scale factor of 2
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player180'/292, l='MpServer', x=-121.25, y=4.00, z=-506.63]]
+	Chunk stats: MultiplayerChunkCache: 624, 624
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -114.00,4.00,-500.00 - World: (-114,4,-500), Chunk: (at 14,0,12 in -8,-32; contains blocks -128,0,-512 to -113,255,-497), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,0,-512 to -1,255,-1)
+	Level time: 12744 game time, 12744 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 110 total; [EntitySlime['史莱姆'/9, l='MpServer', x=-200.00, y=4.00, z=-542.97], EntitySlime['史莱姆'/10, l='MpServer', x=-197.78, y=4.00, z=-542.44], EntityHorse['马'/11, l='MpServer', x=-201.38, y=4.00, z=-517.78], EntityChicken['鸡'/14, l='MpServer', x=-196.66, y=4.00, z=-525.47], EntitySlime['史莱姆'/21, l='MpServer', x=-194.78, y=4.00, z=-484.66], EntitySlime['史莱姆'/22, l='MpServer', x=-196.89, y=4.03, z=-476.64], EntitySlime['史莱姆'/23, l='MpServer', x=-195.28, y=4.00, z=-474.56], EntityVillager['村民'/24, l='MpServer', x=-197.09, y=5.00, z=-442.69], EntityChicken['鸡'/25, l='MpServer', x=-199.41, y=4.00, z=-438.44], EntityCow['牛'/26, l='MpServer', x=-198.22, y=4.00, z=-432.22], EntityVillager['村民'/28, l='MpServer', x=-196.03, y=5.00, z=-442.72], EntitySlime['史莱姆'/41, l='MpServer', x=-182.00, y=4.00, z=-583.78], EntitySlime['史莱姆'/42, l='MpServer', x=-190.03, y=4.00, z=-541.35], EntitySlime['史莱姆'/43, l='MpServer', x=-185.63, y=4.00, z=-519.47], EntitySlime['史莱姆'/44, l='MpServer', x=-180.18, y=4.93, z=-517.55], EntityChicken['鸡'/45, l='MpServer', x=-187.63, y=4.00, z=-508.63], EntitySlime['史莱姆'/46, l='MpServer', x=-189.66, y=4.00, z=-491.16], EntityChicken['鸡'/47, l='MpServer', x=-190.59, y=4.00, z=-442.22], EntityChicken['鸡'/48, l='MpServer', x=-180.31, y=4.63, z=-438.38], EntityVillager['村民'/56, l='MpServer', x=-185.28, y=4.00, z=-438.41], EntitySlime['史莱姆'/75, l='MpServer', x=-168.68, y=4.00, z=-566.13], EntitySlime['史莱姆'/76, l='MpServer', x=-157.83, y=4.03, z=-503.34], EntitySlime['史莱姆'/77, l='MpServer', x=-167.57, y=5.15, z=-497.52], EntitySlime['史莱姆'/78, l='MpServer', x=-164.91, y=4.00, z=-504.44], EntitySlime['史莱姆'/79, l='MpServer', x=-169.09, y=4.00, z=-489.66], EntitySlime['史莱姆'/80, l='MpServer', x=-168.02, y=4.70, z=-489.10], EntitySlime['史莱姆'/81, l='MpServer', x=-168.23, y=5.16, z=-486.55], EntitySlime['史莱姆'/82, l='MpServer', x=-161.59, y=4.00, z=-468.09], EntitySlime['史莱姆'/83, l='MpServer', x=-174.26, y=5.16, z=-451.79], EntityRabbit['兔子'/84, l='MpServer', x=-169.54, y=5.23, z=-436.78], EntityItem['item.item.potato'/89, l='MpServer', x=-168.50, y=4.00, z=-443.50], EntityItem['item.item.seeds'/90, l='MpServer', x=-167.06, y=4.00, z=-443.28], EntityItem['item.item.seeds'/91, l='MpServer', x=-167.53, y=5.00, z=-446.03], EntitySlime['史莱姆'/92, l='MpServer', x=-171.56, y=4.00, z=-438.25], EntityRabbit['兔子'/93, l='MpServer', x=-161.50, y=5.11, z=-435.88], EntityVillager['村民'/99, l='MpServer', x=-170.40, y=4.55, z=-444.64], EntityRabbit['兔子'/104, l='MpServer', x=-160.28, y=4.00, z=-430.56], EntitySlime['史莱姆'/105, l='MpServer', x=-163.06, y=4.00, z=-432.00], EntitySlime['史莱姆'/120, l='MpServer', x=-152.06, y=4.00, z=-499.75], EntitySlime['史莱姆'/121, l='MpServer', x=-156.58, y=4.00, z=-496.08], EntitySlime['史莱姆'/122, l='MpServer', x=-150.13, y=4.00, z=-465.22], EntityVillager['村民'/125, l='MpServer', x=-147.56, y=4.00, z=-431.06], EntitySlime['史莱姆'/130, l='MpServer', x=-137.94, y=4.00, z=-579.72], EntitySlime['史莱姆'/131, l='MpServer', x=-138.09, y=4.00, z=-560.22], EntitySlime['史莱姆'/132, l='MpServer', x=-140.89, y=5.16, z=-564.41], EntitySlime['史莱姆'/133, l='MpServer', x=-141.38, y=4.00, z=-555.13], EntitySlime['史莱姆'/134, l='MpServer', x=-129.25, y=4.70, z=-557.33], EntitySlime['史莱姆'/135, l='MpServer', x=-141.63, y=4.00, z=-501.13], EntitySlime['史莱姆'/136, l='MpServer', x=-132.03, y=4.00, z=-471.72], EntitySlime['史莱姆'/137, l='MpServer', x=-134.13, y=4.00, z=-461.63], EntitySlime['史莱姆'/142, l='MpServer', x=-132.56, y=4.00, z=-557.91], EntitySlime['史莱姆'/143, l='MpServer', x=-131.84, y=4.00, z=-536.09], EntitySlime['史莱姆'/144, l='MpServer', x=-114.56, y=4.27, z=-501.15], EntitySlime['史莱姆'/145, l='MpServer', x=-114.28, y=4.14, z=-477.82], EntitySlime['史莱姆'/146, l='MpServer', x=-119.59, y=4.00, z=-461.69], EntitySlime['史莱姆'/147, l='MpServer', x=-123.13, y=4.00, z=-437.08], EntitySlime['史莱姆'/151, l='MpServer', x=-99.81, y=4.00, z=-565.75], EntitySlime['史莱姆'/152, l='MpServer', x=-107.03, y=4.00, z=-537.31], EntitySlime['史莱姆'/153, l='MpServer', x=-105.89, y=4.70, z=-488.56], EntitySlime['史莱姆'/156, l='MpServer', x=-80.50, y=4.00, z=-487.22], EntitySlime['史莱姆'/157, l='MpServer', x=-91.72, y=4.00, z=-486.72], EntityChicken['鸡'/158, l='MpServer', x=-80.97, y=4.00, z=-438.34], EntityRabbit['兔子'/167, l='MpServer', x=-64.06, y=4.00, z=-534.50], EntitySlime['史莱姆'/168, l='MpServer', x=-79.85, y=4.16, z=-533.06], EntitySlime['史莱姆'/169, l='MpServer', x=-71.94, y=4.00, z=-521.94], EntityRabbit['兔子'/170, l='MpServer', x=-71.59, y=4.19, z=-520.85], EntitySlime['史莱姆'/171, l='MpServer', x=-80.68, y=4.27, z=-511.30], EntityChicken['鸡'/172, l='MpServer', x=-75.09, y=4.00, z=-502.36], EntityRabbit['兔子'/173, l='MpServer', x=-72.38, y=4.00, z=-483.66], EntityRabbit['兔子'/174, l='MpServer', x=-71.88, y=4.00, z=-487.91], EntityCow['牛'/175, l='MpServer', x=-72.63, y=4.00, z=-488.84], EntityRabbit['兔子'/176, l='MpServer', x=-69.38, y=4.00, z=-470.97], EntitySheep['羊'/177, l='MpServer', x=-75.81, y=4.00, z=-462.59], EntityPig['猪'/178, l='MpServer', x=-76.81, y=4.00, z=-433.41], EntityCow['牛'/180, l='MpServer', x=-71.88, y=4.00, z=-433.66], EntityPig['猪'/181, l='MpServer', x=-65.84, y=4.00, z=-427.70], EntityCow['牛'/182, l='MpServer', x=-71.25, y=4.00, z=-430.38], EntityRabbit['兔子'/191, l='MpServer', x=-51.25, y=4.00, z=-533.88], EntityRabbit['兔子'/192, l='MpServer', x=-54.63, y=4.00, z=-531.72], EntityRabbit['兔子'/193, l='MpServer', x=-59.81, y=4.00, z=-528.56], EntityPig['猪'/194, l='MpServer', x=-59.72, y=4.00, z=-530.91], EntityPig['猪'/195, l='MpServer', x=-58.59, y=4.00, z=-532.81], EntityPig['猪'/196, l='MpServer', x=-60.78, y=4.00, z=-525.25], EntityRabbit['兔子'/197, l='MpServer', x=-57.31, y=4.00, z=-525.63], EntityPig['猪'/198, l='MpServer', x=-58.75, y=4.00, z=-513.38], EntitySlime['史莱姆'/199, l='MpServer', x=-58.39, y=5.07, z=-496.73], EntityChicken['鸡'/200, l='MpServer', x=-67.28, y=4.00, z=-484.63], EntityChicken['鸡'/201, l='MpServer', x=-59.94, y=4.00, z=-485.41], EntityChicken['鸡'/202, l='MpServer', x=-59.41, y=4.00, z=-482.84], EntityCow['牛'/203, l='MpServer', x=-62.56, y=4.00, z=-488.41], EntityItem['item.item.egg'/204, l='MpServer', x=-61.84, y=4.00, z=-487.09], EntityItem['item.item.egg'/206, l='MpServer', x=-60.84, y=4.00, z=-485.06], EntityItem['item.item.egg'/207, l='MpServer', x=-63.97, y=4.00, z=-491.72], EntitySheep['羊'/208, l='MpServer', x=-53.06, y=4.00, z=-466.00], EntityRabbit['兔子'/209, l='MpServer', x=-55.09, y=4.00, z=-467.50], EntityCow['牛'/210, l='MpServer', x=-59.75, y=4.00, z=-474.63], EntityCow['牛'/211, l='MpServer', x=-57.84, y=4.00, z=-478.97], EntityHorse['马'/212, l='MpServer', x=-49.41, y=4.00, z=-472.41], EntityChicken['鸡'/213, l='MpServer', x=-55.28, y=4.00, z=-447.69], EntityPlayerSP['Player180'/292, l='MpServer', x=-121.25, y=4.00, z=-506.63], EntityItem['item.item.egg'/214, l='MpServer', x=-58.94, y=4.00, z=-449.56], EntityPig['猪'/215, l='MpServer', x=-57.84, y=4.00, z=-440.84], EntityChicken['鸡'/216, l='MpServer', x=-55.66, y=4.00, z=-444.41], EntityPig['猪'/217, l='MpServer', x=-62.09, y=4.00, z=-430.75], EntityChicken['鸡'/219, l='MpServer', x=-60.00, y=4.00, z=-427.22], EntityChicken['鸡'/227, l='MpServer', x=-45.38, y=4.00, z=-582.66], EntityHorse['马'/233, l='MpServer', x=-47.22, y=4.00, z=-470.56], EntitySheep['羊'/236, l='MpServer', x=-47.88, y=4.00, z=-458.66], EntitySheep['羊'/237, l='MpServer', x=-46.66, y=4.00, z=-454.47], EntitySheep['羊'/240, l='MpServer', x=-42.22, y=4.00, z=-441.84]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:401)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 676699552 bytes (645 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

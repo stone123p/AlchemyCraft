@@ -1,0 +1,13 @@
+package com.hzy.alchemycraft.recipes;
+
+import net.minecraft.init.Blocks;
+
+public class MaterialRecipes {
+	
+	public static String[]	Earth={"clay","stained_hardened_clay","dirt","sand","sandstone","gravel","cobblestone","stone","obsidian"};
+	public static String[] 	Wood={"brown_mushroom","red_mushroom","tallgrass","waterlily","vine","yellow_flower","red_flower","cactus","reeds","sapling","leaves","log",""};
+	public MaterialRecipes(){
+		
+	}
+	
+}

@@ -1,0 +1,122 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 2016/10/21 下午 10:00
+Description: Tesselating block in world
+
+java.lang.ClassCastException: com.hzy.alchemycraft.fluids.BlockFluidProdigy cannot be cast to net.minecraft.block.BlockLiquid
+	at net.minecraft.client.renderer.BlockFluidRenderer.renderFluid(BlockFluidRenderer.java:38)
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:89)
+	at net.minecraft.client.renderer.chunk.RenderChunk.rebuildChunk(RenderChunk.java:194)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.processTask(ChunkRenderWorker.java:99)
+	at net.minecraft.client.renderer.chunk.ChunkRenderDispatcher.updateChunkNow(ChunkRenderDispatcher.java:141)
+	at net.minecraft.client.renderer.RenderGlobal.setupTerrain(RenderGlobal.java:931)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1340)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1111)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1107)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.client.renderer.BlockFluidRenderer.renderFluid(BlockFluidRenderer.java:38)
+
+-- Block being tesselated --
+Details:
+	Block type: ID #219 (tile.BlockFluidProdigy // com.hzy.alchemycraft.fluids.BlockFluidProdigy)
+	Block data value: 0 / 0x0 / 0b0000
+	Block location: World: (668,5,-166), Chunk: (at 12,0,10 in 41,-11; contains blocks 656,0,-176 to 671,255,-161), Region: (1,-1; contains chunks 32,-32 to 63,-1, blocks 512,0,-512 to 1023,255,-1)
+Stacktrace:
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:89)
+	at net.minecraft.client.renderer.chunk.RenderChunk.rebuildChunk(RenderChunk.java:194)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.processTask(ChunkRenderWorker.java:99)
+	at net.minecraft.client.renderer.chunk.ChunkRenderDispatcher.updateChunkNow(ChunkRenderDispatcher.java:141)
+	at net.minecraft.client.renderer.RenderGlobal.setupTerrain(RenderGlobal.java:931)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1340)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player40'/314, l='MpServer', x=668.75, y=5.00, z=-167.87]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 588.00,4.00,-139.00 - World: (588,4,-139), Chunk: (at 12,0,5 in 36,-9; contains blocks 576,0,-144 to 591,255,-129), Region: (1,-1; contains chunks 32,-32 to 63,-1, blocks 512,0,-512 to 1023,255,-1)
+	Level time: 10272 game time, 10272 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 129 total; [EntityChicken['鸡'/256, l='MpServer', x=702.94, y=4.00, z=-242.91], EntitySheep['羊'/260, l='MpServer', x=692.34, y=4.00, z=-236.19], EntitySheep['羊'/261, l='MpServer', x=694.06, y=4.00, z=-237.16], EntitySheep['羊'/262, l='MpServer', x=701.16, y=4.00, z=-237.78], EntitySlime['史莱姆'/263, l='MpServer', x=694.91, y=5.22, z=-232.44], EntityItem['item.item.potato'/264, l='MpServer', x=689.47, y=5.00, z=-225.19], EntityItem['item.item.potato'/265, l='MpServer', x=688.72, y=5.00, z=-218.69], EntityItem['item.item.seeds'/266, l='MpServer', x=690.78, y=5.00, z=-208.94], EntityItem['item.item.wheat'/267, l='MpServer', x=691.56, y=5.00, z=-213.03], EntityItem['item.item.seeds'/268, l='MpServer', x=691.84, y=5.00, z=-213.28], EntityVillager['村民'/269, l='MpServer', x=709.22, y=4.00, z=-192.56], EntityVillager['村民'/270, l='MpServer', x=703.38, y=4.00, z=-168.66], EntityItem['item.item.seeds'/271, l='MpServer', x=696.41, y=5.00, z=-160.16], EntityItem['item.item.wheat'/272, l='MpServer', x=695.97, y=5.00, z=-160.06], EntitySheep['羊'/273, l='MpServer', x=703.38, y=4.00, z=-155.38], EntitySheep['羊'/274, l='MpServer', x=702.16, y=4.00, z=-155.38], EntityCow['牛'/275, l='MpServer', x=702.88, y=4.00, z=-159.09], EntityCow['牛'/276, l='MpServer', x=702.47, y=4.00, z=-157.59], EntityCow['牛'/277, l='MpServer', x=700.53, y=4.00, z=-151.53], EntityCow['牛'/278, l='MpServer', x=703.66, y=4.00, z=-153.88], EntityItem['item.item.seeds'/13590, l='MpServer', x=669.69, y=5.00, z=-226.19], EntityItem['item.item.seeds'/281, l='MpServer', x=696.59, y=4.00, z=-158.38], EntitySlime['史莱姆'/282, l='MpServer', x=702.03, y=4.47, z=-152.31], EntityVillager['村民'/284, l='MpServer', x=702.28, y=4.00, z=-163.34], EntityVillager['村民'/285, l='MpServer', x=696.56, y=4.00, z=-142.88], EntitySlime['史莱姆'/286, l='MpServer', x=702.00, y=5.22, z=-98.31], EntitySlime['史莱姆'/287, l='MpServer', x=687.25, y=4.00, z=-88.47], EntityRabbit['兔子'/295, l='MpServer', x=706.72, y=4.00, z=-245.72], EntityVillager['村民'/296, l='MpServer', x=704.59, y=4.00, z=-168.28], EntitySlime['史莱姆'/297, l='MpServer', x=710.53, y=4.00, z=-132.44], EntitySlime['史莱姆'/298, l='MpServer', x=702.25, y=5.16, z=-141.53], EntitySlime['史莱姆'/299, l='MpServer', x=718.44, y=4.00, z=-111.59], EntitySlime['史莱姆'/303, l='MpServer', x=734.13, y=4.00, z=-200.91], EntitySlime['史莱姆'/304, l='MpServer', x=730.56, y=4.00, z=-159.25], EntitySlime['史莱姆'/305, l='MpServer', x=732.81, y=4.00, z=-135.53], EntitySlime['史莱姆'/306, l='MpServer', x=746.94, y=4.00, z=-125.94], EntitySlime['史莱姆'/307, l='MpServer', x=724.22, y=4.00, z=-118.81], EntitySlime['史莱姆'/310, l='MpServer', x=745.25, y=4.00, z=-148.81], EntityPlayerSP['Player40'/314, l='MpServer', x=668.75, y=5.00, z=-167.87], EntitySheep['羊'/100, l='MpServer', x=594.88, y=4.00, z=-240.97], EntityPig['猪'/123, l='MpServer', x=608.03, y=4.00, z=-181.09], EntityChicken['鸡'/124, l='MpServer', x=603.72, y=4.00, z=-178.09], EntityChicken['鸡'/125, l='MpServer', x=597.91, y=4.00, z=-179.47], EntityChicken['鸡'/127, l='MpServer', x=592.47, y=4.00, z=-131.31], EntitySlime['史莱姆'/133, l='MpServer', x=613.31, y=5.16, z=-231.50], EntitySlime['史莱姆'/134, l='MpServer', x=613.66, y=4.00, z=-197.03], EntityPig['猪'/135, l='MpServer', x=623.09, y=4.00, z=-180.53], EntitySlime['史莱姆'/136, l='MpServer', x=601.13, y=4.00, z=-141.06], EntitySlime['史莱姆'/137, l='MpServer', x=615.00, y=4.00, z=-153.81], EntityVillager['村民'/138, l='MpServer', x=632.06, y=5.50, z=-193.56], EntityVillager['村民'/139, l='MpServer', x=627.03, y=4.00, z=-179.56], EntitySlime['史莱姆'/140, l='MpServer', x=618.53, y=4.00, z=-182.09], EntitySlime['史莱姆'/141, l='MpServer', x=631.09, y=4.00, z=-167.88], EntitySlime['史莱姆'/142, l='MpServer', x=630.25, y=5.00, z=-175.13], EntitySlime['史莱姆'/143, l='MpServer', x=624.13, y=4.00, z=-175.09], EntitySlime['史莱姆'/144, l='MpServer', x=632.79, y=4.27, z=-171.69], EntityChicken['鸡'/145, l='MpServer', x=628.38, y=4.00, z=-157.56], EntityItem['item.item.egg'/146, l='MpServer', x=628.38, y=4.00, z=-157.84], EntitySlime['史莱姆'/147, l='MpServer', x=633.97, y=4.00, z=-154.00], EntityChicken['鸡'/148, l='MpServer', x=639.41, y=4.00, z=-132.28], EntityItem['item.item.egg'/149, l='MpServer', x=637.72, y=4.00, z=-127.81], EntitySlime['史莱姆'/150, l='MpServer', x=656.38, y=6.00, z=-208.16], EntityVillager['村民'/151, l='MpServer', x=644.72, y=4.00, z=-200.56], EntityVillager['村民'/152, l='MpServer', x=659.47, y=4.00, z=-212.31], EntityItem['item.item.wheat'/153, l='MpServer', x=651.13, y=4.00, z=-198.34], EntityItem['item.item.seeds'/154, l='MpServer', x=650.88, y=5.00, z=-196.72], EntityItem['item.item.seeds'/155, l='MpServer', x=651.88, y=4.00, z=-198.75], EntityItem['item.item.potato'/156, l='MpServer', x=652.78, y=5.00, z=-201.59], EntityItem['item.item.potato'/157, l='MpServer', x=654.66, y=5.00, z=-199.72], EntityItem['item.item.seeds'/158, l='MpServer', x=654.97, y=5.00, z=-196.91], EntityItem['item.item.seeds'/159, l='MpServer', x=652.34, y=5.00, z=-195.75], EntityItem['item.item.potato'/160, l='MpServer', x=653.41, y=5.00, z=-200.13], EntityItem['item.item.seeds'/161, l='MpServer', x=653.22, y=5.00, z=-197.25], EntityItem['item.item.wheat'/162, l='MpServer', x=653.19, y=5.00, z=-197.38], EntitySlime['史莱姆'/163, l='MpServer', x=658.31, y=4.41, z=-191.25], EntitySlime['史莱姆'/164, l='MpServer', x=651.25, y=6.41, z=-193.91], EntitySlime['史莱姆'/165, l='MpServer', x=644.81, y=4.00, z=-182.34], EntitySlime['史莱姆'/166, l='MpServer', x=657.25, y=4.00, z=-185.69], EntitySlime['史莱姆'/167, l='MpServer', x=648.41, y=9.00, z=-183.28], EntitySlime['史莱姆'/168, l='MpServer', x=652.00, y=4.00, z=-172.50], EntitySlime['史莱姆'/169, l='MpServer', x=640.91, y=5.00, z=-163.63], EntitySlime['史莱姆'/170, l='MpServer', x=641.59, y=4.00, z=-170.91], EntitySlime['史莱姆'/171, l='MpServer', x=629.88, y=4.00, z=-161.50], EntitySlime['史莱姆'/172, l='MpServer', x=651.63, y=4.47, z=-159.38], EntitySlime['史莱姆'/173, l='MpServer', x=658.91, y=4.00, z=-130.84], EntityChicken['鸡'/176, l='MpServer', x=662.59, y=4.00, z=-243.56], EntityItem['item.item.seeds'/179, l='MpServer', x=667.34, y=4.00, z=-225.88], EntityItem['item.item.seeds'/180, l='MpServer', x=669.31, y=5.00, z=-224.22], EntityVillager['村民'/181, l='MpServer', x=657.63, y=4.00, z=-216.47], EntityItem['item.item.potato'/182, l='MpServer', x=665.84, y=5.00, z=-220.56], EntityVillager['村民'/184, l='MpServer', x=664.94, y=4.00, z=-215.31], EntityItem['item.item.seeds'/185, l='MpServer', x=667.84, y=4.00, z=-219.94], EntityItem['item.item.wheat'/186, l='MpServer', x=669.81, y=5.00, z=-224.00], EntityCow['牛'/187, l='MpServer', x=668.44, y=4.00, z=-204.47], EntityCow['牛'/188, l='MpServer', x=678.00, y=4.00, z=-197.25], EntityItem['item.item.potato'/189, l='MpServer', x=656.03, y=4.00, z=-198.31], EntityItem['item.item.seeds'/190, l='MpServer', x=657.50, y=5.00, z=-197.56], EntityItem['item.item.wheat'/191, l='MpServer', x=656.53, y=5.00, z=-196.63], EntityItem['item.item.seeds'/192, l='MpServer', x=656.06, y=5.00, z=-196.88], EntityItem['item.item.potato'/193, l='MpServer', x=656.41, y=5.00, z=-199.69], EntitySlime['史莱姆'/194, l='MpServer', x=662.03, y=4.41, z=-196.75], EntitySlime['史莱姆'/195, l='MpServer', x=664.31, y=5.00, z=-207.28], EntitySlime['史莱姆'/196, l='MpServer', x=669.22, y=4.00, z=-192.63], EntitySlime['史莱姆'/197, l='MpServer', x=661.72, y=5.00, z=-202.94], EntitySlime['史莱姆'/198, l='MpServer', x=655.00, y=5.00, z=-181.03], EntityVillager['村民'/199, l='MpServer', x=654.03, y=4.00, z=-184.63], EntityVillager['村民'/200, l='MpServer', x=669.72, y=4.00, z=-176.25], EntitySheep['羊'/219, l='MpServer', x=681.94, y=4.00, z=-234.59], EntityItem['item.item.carrots'/220, l='MpServer', x=685.75, y=5.00, z=-224.38], EntitySlime['史莱姆'/221, l='MpServer', x=677.25, y=5.00, z=-222.84], EntityRabbit['兔子'/222, l='MpServer', x=686.16, y=5.00, z=-219.00], EntityItem['item.item.carrots'/223, l='MpServer', x=684.91, y=5.00, z=-222.00], EntityItem['item.item.carrots'/224, l='MpServer', x=686.38, y=5.00, z=-221.25], EntityItem['item.item.seeds'/225, l='MpServer', x=682.66, y=5.00, z=-222.13], EntityItem['item.item.wheat'/226, l='MpServer', x=683.09, y=5.00, z=-222.47], EntityHorse['马'/227, l='MpServer', x=672.16, y=4.00, z=-222.03], EntityItem['item.item.seeds'/228, l='MpServer', x=684.34, y=5.00, z=-207.38], EntitySlime['史莱姆'/229, l='MpServer', x=685.41, y=4.09, z=-195.28], EntitySlime['史莱姆'/230, l='MpServer', x=676.47, y=4.78, z=-196.97], EntitySlime['史莱姆'/231, l='MpServer', x=681.59, y=4.00, z=-197.13], EntitySlime['史莱姆'/232, l='MpServer', x=674.25, y=4.00, z=-208.81], EntitySlime['史莱姆'/233, l='MpServer', x=672.94, y=5.00, z=-184.78], EntityItem['item.item.slimeball'/234, l='MpServer', x=673.75, y=4.00, z=-166.00], EntityItem['item.item.slimeball'/235, l='MpServer', x=674.66, y=4.00, z=-166.19], EntitySlime['史莱姆'/236, l='MpServer', x=679.84, y=4.91, z=-164.03], EntitySheep['羊'/237, l='MpServer', x=679.97, y=4.00, z=-144.06], EntitySlime['史莱姆'/239, l='MpServer', x=680.78, y=4.00, z=-93.72], EntityVillager['村民'/254, l='MpServer', x=698.78, y=4.00, z=-241.53], EntityChicken['鸡'/255, l='MpServer', x=692.81, y=4.00, z=-242.16]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:401)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 680083456 bytes (648 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

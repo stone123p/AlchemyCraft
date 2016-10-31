@@ -1,0 +1,107 @@
+---- Minecraft Crash Report ----
+// I just don't know what went wrong :(
+
+Time: 2016/10/24 下午 2:18
+Description: Unexpected error
+
+java.lang.ArrayIndexOutOfBoundsException: 25
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.addPotion(TileEntityACCauldron.java:64)
+	at com.hzy.alchemycraft.blocks.ACCauldron.onBlockActivated(ACCauldron.java:77)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.onPlayerRightClick(PlayerControllerMP.java:412)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1569)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:2123)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1080)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at com.hzy.alchemycraft.tileentity.TileEntityACCauldron.addPotion(TileEntityACCauldron.java:64)
+	at com.hzy.alchemycraft.blocks.ACCauldron.onBlockActivated(ACCauldron.java:77)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.onPlayerRightClick(PlayerControllerMP.java:412)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1569)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player693'/89, l='MpServer', x=-1163.51, y=4.00, z=679.45]]
+	Chunk stats: MultiplayerChunkCache: 621, 621
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -1150.00,4.00,682.00 - World: (-1150,4,682), Chunk: (at 2,0,10 in -72,42; contains blocks -1152,0,672 to -1137,255,687), Region: (-3,1; contains chunks -96,32 to -65,63, blocks -1536,0,512 to -1025,255,1023)
+	Level time: 3544 game time, 3544 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 46 total; [EntitySlime['史莱姆'/18, l='MpServer', x=-1241.88, y=4.00, z=615.81], EntitySheep['羊'/19, l='MpServer', x=-1235.47, y=4.00, z=646.38], EntitySlime['史莱姆'/20, l='MpServer', x=-1236.69, y=4.51, z=645.74], EntitySlime['史莱姆'/23, l='MpServer', x=-1228.78, y=4.47, z=639.97], EntitySlime['史莱姆'/26, l='MpServer', x=-1234.70, y=4.14, z=718.39], EntitySlime['史莱姆'/29, l='MpServer', x=-1217.16, y=4.00, z=632.25], EntitySlime['史莱姆'/119964, l='MpServer', x=-1239.50, y=4.00, z=628.16], EntitySlime['史莱姆'/30, l='MpServer', x=-1220.19, y=5.22, z=741.06], EntitySlime['史莱姆'/50721, l='MpServer', x=-1240.66, y=4.00, z=616.19], EntitySlime['史莱姆'/33, l='MpServer', x=-1205.19, y=4.00, z=602.22], EntitySlime['史莱姆'/34, l='MpServer', x=-1215.31, y=4.00, z=620.78], EntitySlime['史莱姆'/118179, l='MpServer', x=-1203.50, y=4.00, z=603.88], EntitySlime['史莱姆'/35, l='MpServer', x=-1201.88, y=5.16, z=693.34], EntitySlime['史莱姆'/115362, l='MpServer', x=-1135.54, y=5.16, z=641.44], EntitySlime['史莱姆'/37, l='MpServer', x=-1207.13, y=4.00, z=736.44], EntitySlime['史莱姆'/38, l='MpServer', x=-1194.03, y=4.00, z=750.91], EntitySlime['史莱姆'/40, l='MpServer', x=-1175.03, y=4.00, z=627.03], EntitySlime['史莱姆'/41, l='MpServer', x=-1183.81, y=4.00, z=603.34], EntitySlime['史莱姆'/42, l='MpServer', x=-1218.47, y=4.78, z=686.69], EntitySlime['史莱姆'/43, l='MpServer', x=-1195.41, y=4.47, z=674.88], EntitySlime['史莱姆'/44, l='MpServer', x=-1225.41, y=4.00, z=687.66], EntitySlime['史莱姆'/45, l='MpServer', x=-1205.47, y=4.09, z=739.69], EntityChicken['鸡'/46, l='MpServer', x=-1191.56, y=4.00, z=738.66], EntitySlime['史莱姆'/49, l='MpServer', x=-1162.03, y=4.00, z=650.56], EntitySlime['史莱姆'/50, l='MpServer', x=-1171.94, y=5.00, z=666.63], EntitySlime['史莱姆'/51, l='MpServer', x=-1177.97, y=5.22, z=667.84], EntitySlime['史莱姆'/52, l='MpServer', x=-1192.72, y=4.00, z=689.84], EntityPig['猪'/53, l='MpServer', x=-1163.09, y=4.00, z=712.19], EntityRabbit['兔子'/56, l='MpServer', x=-1165.50, y=4.00, z=615.50], EntitySlime['史莱姆'/57, l='MpServer', x=-1133.19, y=5.00, z=686.28], EntitySlime['史莱姆'/58, l='MpServer', x=-1164.54, y=4.14, z=694.73], EntitySlime['史莱姆'/60, l='MpServer', x=-1154.28, y=4.00, z=625.72], EntitySlime['史莱姆'/61, l='MpServer', x=-1147.44, y=4.00, z=709.72], EntitySlime['史莱姆'/62, l='MpServer', x=-1180.81, y=5.16, z=743.84], EntitySlime['史莱姆'/63, l='MpServer', x=-1152.38, y=5.00, z=760.88], EntitySlime['史莱姆'/66, l='MpServer', x=-1110.06, y=5.00, z=627.66], EntitySlime['史莱姆'/67, l='MpServer', x=-1137.28, y=4.00, z=652.78], EntitySlime['史莱姆'/68, l='MpServer', x=-1130.34, y=5.16, z=637.09], EntitySlime['史莱姆'/69, l='MpServer', x=-1118.66, y=4.00, z=644.53], EntityChicken['鸡'/70, l='MpServer', x=-1132.59, y=4.00, z=727.38], EntitySlime['史莱姆'/74, l='MpServer', x=-1128.22, y=4.41, z=643.94], EntitySlime['史莱姆'/76, l='MpServer', x=-1087.97, y=4.00, z=636.28], EntitySheep['羊'/78, l='MpServer', x=-1094.03, y=4.00, z=720.03], EntitySlime['史莱姆'/111577, l='MpServer', x=-1137.03, y=4.00, z=649.28], EntitySlime['史莱姆'/32990, l='MpServer', x=-1238.83, y=4.34, z=611.71], EntityPlayerSP['Player693'/89, l='MpServer', x=-1163.51, y=4.00, z=679.45]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:409)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 649637344 bytes (619 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

@@ -1,0 +1,123 @@
+---- Minecraft Crash Report ----
+// Uh... Did I do that?
+
+Time: 2016/10/21 下午 6:25
+Description: Rendering Block Entity
+
+java.lang.NullPointerException: Rendering Block Entity
+	at net.minecraftforge.fluids.Fluid.<init>(Fluid.java:101)
+	at com.hzy.alchemycraft.renderer.RenderDiffuser.renderTileEntityAt(RenderDiffuser.java:32)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntityAt(TileEntityRendererDispatcher.java:142)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntity(TileEntityRendererDispatcher.java:117)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:698)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1369)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1111)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1107)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraftforge.fluids.Fluid.<init>(Fluid.java:101)
+	at com.hzy.alchemycraft.renderer.RenderDiffuser.renderTileEntityAt(RenderDiffuser.java:32)
+
+-- Block Entity Details --
+Details:
+	Name: TileEntityDiffuserBlock // com.hzy.alchemycraft.tileentity.TileEntityDiffuserBlock
+	Block type: ID #212 (tile.Diffuser // com.hzy.alchemycraft.blocks.Diffuser)
+	Block data value: 0 / 0x0 / 0b0000
+	Block location: World: (960,4,-1283), Chunk: (at 0,0,13 in 60,-81; contains blocks 960,0,-1296 to 975,255,-1281), Region: (1,-3; contains chunks 32,-96 to 63,-65, blocks 512,0,-1536 to 1023,255,-1025)
+	Actual block type: ID #212 (tile.Diffuser // com.hzy.alchemycraft.blocks.Diffuser)
+	Actual block data value: 0 / 0x0 / 0b0000
+Stacktrace:
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntityAt(TileEntityRendererDispatcher.java:142)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntity(TileEntityRendererDispatcher.java:117)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:698)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1369)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player186'/234, l='MpServer', x=961.86, y=4.00, z=-1284.69]]
+	Chunk stats: MultiplayerChunkCache: 623, 623
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: 948.00,4.00,-1277.00 - World: (948,4,-1277), Chunk: (at 4,0,3 in 59,-80; contains blocks 944,0,-1280 to 959,255,-1265), Region: (1,-3; contains chunks 32,-96 to 63,-65, blocks 512,0,-1536 to 1023,255,-1025)
+	Level time: 2709 game time, 2709 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 101 total; [EntityPlayerSP['Player186'/234, l='MpServer', x=961.86, y=4.00, z=-1284.69], EntitySlime['史莱姆'/47, l='MpServer', x=890.19, y=4.00, z=-1307.96], EntityChicken['鸡'/48, l='MpServer', x=900.34, y=4.00, z=-1293.31], EntitySlime['史莱姆'/50, l='MpServer', x=886.63, y=4.00, z=-1254.22], EntitySlime['史莱姆'/51, l='MpServer', x=886.22, y=4.00, z=-1233.94], EntityRabbit['兔子'/53, l='MpServer', x=891.72, y=4.00, z=-1205.31], EntitySlime['史莱姆'/5173, l='MpServer', x=911.47, y=4.00, z=-1219.34], EntityRabbit['兔子'/55, l='MpServer', x=895.09, y=4.00, z=-1205.75], EntityRabbit['兔子'/56, l='MpServer', x=892.44, y=4.00, z=-1210.78], EntityRabbit['兔子'/57, l='MpServer', x=894.44, y=4.00, z=-1205.34], EntityChicken['鸡'/58, l='MpServer', x=885.63, y=4.00, z=-1217.34], EntityRabbit['兔子'/59, l='MpServer', x=895.63, y=4.00, z=-1205.59], EntitySlime['史莱姆'/17987, l='MpServer', x=1015.72, y=4.00, z=-1329.13], EntityRabbit['兔子'/78, l='MpServer', x=905.16, y=4.00, z=-1344.94], EntityPig['猪'/79, l='MpServer', x=908.50, y=4.00, z=-1347.50], EntityPig['猪'/80, l='MpServer', x=910.53, y=4.00, z=-1346.63], EntityPig['猪'/81, l='MpServer', x=909.06, y=4.00, z=-1344.22], EntityPig['猪'/82, l='MpServer', x=915.00, y=4.00, z=-1349.00], EntitySheep['羊'/83, l='MpServer', x=905.75, y=4.00, z=-1343.22], EntityRabbit['兔子'/84, l='MpServer', x=903.47, y=4.00, z=-1353.84], EntitySheep['羊'/85, l='MpServer', x=910.50, y=4.00, z=-1339.50], EntityRabbit['兔子'/86, l='MpServer', x=906.50, y=4.00, z=-1341.50], EntityRabbit['兔子'/87, l='MpServer', x=908.56, y=4.00, z=-1338.50], EntitySlime['史莱姆'/88, l='MpServer', x=903.68, y=4.40, z=-1312.80], EntityChicken['鸡'/89, l='MpServer', x=904.97, y=4.00, z=-1290.38], EntitySlime['史莱姆'/90, l='MpServer', x=906.84, y=4.00, z=-1292.66], EntitySlime['史莱姆'/91, l='MpServer', x=913.27, y=4.27, z=-1289.00], EntitySlime['史莱姆'/92, l='MpServer', x=899.41, y=4.00, z=-1277.41], EntitySheep['羊'/93, l='MpServer', x=911.16, y=4.00, z=-1269.69], EntitySheep['羊'/94, l='MpServer', x=911.41, y=4.00, z=-1274.88], EntityChicken['鸡'/95, l='MpServer', x=910.31, y=4.00, z=-1270.44], EntityChicken['鸡'/96, l='MpServer', x=911.63, y=4.00, z=-1267.03], EntitySheep['羊'/97, l='MpServer', x=907.50, y=4.00, z=-1275.34], EntitySlime['史莱姆'/98, l='MpServer', x=898.32, y=4.70, z=-1273.17], EntitySheep['羊'/99, l='MpServer', x=903.69, y=4.00, z=-1261.78], EntitySlime['史莱姆'/100, l='MpServer', x=909.84, y=4.00, z=-1255.28], EntitySlime['史莱姆'/101, l='MpServer', x=897.57, y=4.14, z=-1241.38], EntitySlime['史莱姆'/102, l='MpServer', x=916.44, y=3.91, z=-1232.78], EntitySlime['史莱姆'/103, l='MpServer', x=908.89, y=4.14, z=-1232.21], EntitySlime['史莱姆'/104, l='MpServer', x=900.59, y=4.93, z=-1228.09], EntitySlime['史莱姆'/105, l='MpServer', x=890.75, y=4.00, z=-1217.66], EntityChicken['鸡'/106, l='MpServer', x=897.00, y=4.00, z=-1210.47], EntitySlime['史莱姆'/107, l='MpServer', x=889.78, y=4.00, z=-1207.28], EntitySlime['史莱姆'/108, l='MpServer', x=908.17, y=4.93, z=-1207.34], EntitySheep['羊'/114, l='MpServer', x=914.50, y=4.00, z=-1346.50], EntitySheep['羊'/115, l='MpServer', x=920.84, y=4.00, z=-1346.19], EntitySlime['史莱姆'/116, l='MpServer', x=936.13, y=4.00, z=-1305.59], EntityChicken['鸡'/117, l='MpServer', x=919.53, y=4.00, z=-1285.31], EntityChicken['鸡'/118, l='MpServer', x=913.41, y=4.00, z=-1287.28], EntityChicken['鸡'/119, l='MpServer', x=916.38, y=4.00, z=-1253.63], EntitySlime['史莱姆'/120, l='MpServer', x=921.38, y=4.14, z=-1232.91], EntitySlime['史莱姆'/121, l='MpServer', x=910.82, y=4.40, z=-1236.66], EntitySlime['史莱姆'/122, l='MpServer', x=925.86, y=4.03, z=-1240.38], EntitySlime['史莱姆'/123, l='MpServer', x=918.25, y=4.00, z=-1216.63], EntitySlime['史莱姆'/124, l='MpServer', x=907.58, y=5.15, z=-1237.84], EntitySlime['史莱姆'/125, l='MpServer', x=926.53, y=4.91, z=-1221.47], EntitySlime['史莱姆'/135, l='MpServer', x=946.25, y=4.00, z=-1355.25], EntitySlime['史莱姆'/136, l='MpServer', x=935.97, y=4.00, z=-1303.22], EntityChicken['鸡'/137, l='MpServer', x=938.34, y=4.00, z=-1254.44], EntitySlime['史莱姆'/138, l='MpServer', x=927.68, y=4.00, z=-1231.81], EntitySlime['史莱姆'/152, l='MpServer', x=947.06, y=4.00, z=-1350.44], EntitySlime['史莱姆'/153, l='MpServer', x=930.27, y=4.27, z=-1303.93], EntityChicken['鸡'/154, l='MpServer', x=958.53, y=4.00, z=-1307.75], EntityRabbit['兔子'/164, l='MpServer', x=967.94, y=4.00, z=-1318.13], EntityRabbit['兔子'/165, l='MpServer', x=972.56, y=4.00, z=-1318.66], EntityChicken['鸡'/166, l='MpServer', x=968.63, y=4.00, z=-1318.09], EntityChicken['鸡'/167, l='MpServer', x=973.47, y=4.00, z=-1332.38], EntityRabbit['兔子'/168, l='MpServer', x=972.00, y=4.00, z=-1315.78], EntityRabbit['兔子'/169, l='MpServer', x=969.34, y=4.00, z=-1316.00], EntityChicken['鸡'/170, l='MpServer', x=967.28, y=4.00, z=-1325.47], EntitySlime['史莱姆'/171, l='MpServer', x=969.63, y=4.00, z=-1329.13], EntitySlime['史莱姆'/172, l='MpServer', x=974.22, y=4.00, z=-1309.03], EntitySlime['史莱姆'/173, l='MpServer', x=967.75, y=4.00, z=-1316.66], EntityRabbit['兔子'/174, l='MpServer', x=963.66, y=4.23, z=-1291.71], EntityRabbit['兔子'/175, l='MpServer', x=961.34, y=4.00, z=-1305.03], EntitySlime['史莱姆'/176, l='MpServer', x=966.63, y=4.00, z=-1296.78], EntitySlime['史莱姆'/177, l='MpServer', x=961.31, y=4.00, z=-1302.47], EntitySlime['史莱姆'/178, l='MpServer', x=958.94, y=4.00, z=-1271.44], EntityChicken['鸡'/179, l='MpServer', x=979.38, y=4.00, z=-1206.31], EntitySlime['史莱姆'/181, l='MpServer', x=982.03, y=4.00, z=-1333.25], EntitySlime['史莱姆'/182, l='MpServer', x=990.59, y=4.00, z=-1329.59], EntityRabbit['兔子'/183, l='MpServer', x=976.44, y=4.00, z=-1321.44], EntitySlime['史莱姆'/184, l='MpServer', x=987.27, y=4.40, z=-1322.27], EntitySlime['史莱姆'/185, l='MpServer', x=973.99, y=4.91, z=-1300.28], EntitySlime['史莱姆'/186, l='MpServer', x=965.73, y=4.26, z=-1314.55], EntitySlime['史莱姆'/187, l='MpServer', x=980.91, y=4.00, z=-1299.94], EntitySlime['史莱姆'/188, l='MpServer', x=988.66, y=4.03, z=-1307.13], EntitySlime['史莱姆'/208, l='MpServer', x=1002.01, y=4.40, z=-1344.28], EntityHorse['马'/210, l='MpServer', x=1020.50, y=4.00, z=-1296.50], EntityHorse['马'/211, l='MpServer', x=1022.63, y=4.00, z=-1306.78], EntityHorse['马'/212, l='MpServer', x=1019.44, y=4.00, z=-1303.16], EntitySheep['羊'/213, l='MpServer', x=1015.00, y=4.00, z=-1296.72], EntityRabbit['兔子'/214, l='MpServer', x=1017.41, y=4.00, z=-1292.41], EntityRabbit['兔子'/215, l='MpServer', x=1029.78, y=4.00, z=-1296.34], EntityRabbit['兔子'/216, l='MpServer', x=1018.34, y=4.00, z=-1291.66], EntitySheep['羊'/217, l='MpServer', x=1016.50, y=4.00, z=-1295.50], EntitySheep['羊'/218, l='MpServer', x=1023.84, y=4.00, z=-1289.88], EntitySlime['史莱姆'/219, l='MpServer', x=1018.69, y=4.00, z=-1229.31], EntityHorse['马'/220, l='MpServer', x=1026.69, y=4.00, z=-1308.72], EntitySlime['史莱姆'/221, l='MpServer', x=1026.06, y=4.00, z=-1301.25], EntitySlime['史莱姆'/222, l='MpServer', x=1033.25, y=4.00, z=-1336.72]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:401)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 799657408 bytes (762 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

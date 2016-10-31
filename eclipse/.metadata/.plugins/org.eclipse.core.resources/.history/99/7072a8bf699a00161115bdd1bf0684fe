@@ -1,0 +1,14 @@
+package com.hzy.alchemycraft.items;
+
+import com.hzy.alchemycraft.AlchemyCraft;
+
+import net.minecraft.item.Item;
+
+public class NuggetSetting extends Item {
+
+	public NuggetSetting(String string) {
+		this.setCreativeTab(AlchemyCraft.alchemycraftTab);
+		this.setUnlocalizedName(string);
+	}
+
+}

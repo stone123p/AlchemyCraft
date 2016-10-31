@@ -1,0 +1,303 @@
+package com.hzy.alchemycraft.tileentity;
+
+import com.hzy.alchemycraft.blocks.Distiller;
+import com.hzy.alchemycraft.items.ACItems;
+import com.hzy.alchemycraft.recipes.DistillerRecipes;
+
+import net.minecraft.block.Block;
+import net.minecraft.util.ITickable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class TileEntityDistillerBlock  extends TileEntity implements IInventory, ITickable{
+
+	public ItemStack[] furnaceItemStacks = new ItemStack[4];
+
+	public int furnaceBurnTime=0;
+	public int currentBurnTime=0;
+	public int furnaceCookTime=0;
+
+	private String furnaceName;
+
+	
+	
+	@Override
+	public int getSizeInventory() {
+		return this.furnaceItemStacks.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		return this.furnaceItemStacks[index];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		if (this.furnaceItemStacks[index] != null) {
+			ItemStack itemstack;
+			if (this.furnaceItemStacks[index].stackSize <= count) {
+				itemstack = this.furnaceItemStacks[index];
+				this.furnaceItemStacks[index] = null;
+				return itemstack;
+			} else {
+				itemstack = this.furnaceItemStacks[index].splitStack(count);
+
+				if (this.furnaceItemStacks[index].stackSize == 0) {
+					this.furnaceItemStacks[index] = null;
+				}
+				return itemstack;
+			}
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		return  this.furnaceItemStacks[index];
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) {
+		this.furnaceItemStacks[index] = stack;
+
+		if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
+			stack.stackSize = this.getInventoryStackLimit();
+		}
+		
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return this.worldObj.getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+	}
+
+	
+	@SideOnly(Side.CLIENT)
+	public int getCookProgressScaled(int par1) {
+		return this.furnaceCookTime * par1 / 200;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public int getBurnTimeRemainingScaled(int par1) {
+		if (this.currentBurnTime == 0) {
+			this.currentBurnTime = 200;
+		}
+
+		return this.furnaceBurnTime * par1 / this.currentBurnTime;
+	}
+
+	public boolean isBurning() {
+		return this.furnaceBurnTime > 0;
+	}
+
+	
+	@SideOnly(Side.CLIENT)
+	public static boolean func_174903_a(IInventory parIInventory){
+		return true;
+	}
+
+	@Override
+	public void update() {
+	
+		boolean flag = this.furnaceBurnTime > 0;
+		boolean flag1 = false;
+		if (this.furnaceBurnTime > 0 ) {
+			--this.furnaceBurnTime;
+		}
+		
+
+		if (!this.worldObj.isRemote) {
+			if (this.furnaceBurnTime == 0 && this.canSmelt()) {
+				this.currentBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+
+				if (this.furnaceBurnTime > 0) {
+					flag1 = true;
+					if (this.furnaceItemStacks[1] != null) {
+
+						--this.furnaceItemStacks[1].stackSize;
+
+						if (this.furnaceItemStacks[1].stackSize == 0) {
+							this.furnaceItemStacks[1] = furnaceItemStacks[1].getItem().getContainerItem(this.furnaceItemStacks[1]);
+						}
+					}
+				}
+			}
+
+			if (this.canSmelt() && isBurning()) {
+				++this.furnaceCookTime;
+				if (this.furnaceCookTime == 150) {
+					this.furnaceCookTime = 0;
+					this.smeltItem();
+					flag1 = true;
+				}
+			} else {
+				this.furnaceCookTime = 0;
+			}
+		}
+
+		if (flag != this.furnaceBurnTime > 0) {
+			flag1 = true;
+			//Distiller.updateBlockState(this.furnaceBurnTime > 0, this.worldObj,this.pos.getX(), this.pos.getY(), this.pos.getZ());
+		}
+
+		if (flag1) {
+			this.markDirty();
+		}
+	}
+
+	
+
+
+	private boolean canSmelt() {
+		if (this.furnaceItemStacks[0] == null || this.furnaceItemStacks[3]== null) {
+			return false;
+		} else {
+			ItemStack itemstack = DistillerRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0],0);
+
+			if(this.furnaceItemStacks[3].getItem() != Items.glass_bottle)return false;
+			if (itemstack == null) return false;
+			if (this.furnaceItemStacks[2] == null) return  true;
+			if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
+			int result = furnaceItemStacks[2].stackSize + itemstack.stackSize;
+			return ( result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize());
+
+		}
+	}
+
+	public void smeltItem() {
+		if (this.canSmelt()) {
+			//主產品
+			ItemStack itemstack = DistillerRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0],0);
+
+			ItemStack j=furnaceItemStacks[0];
+			if (this.furnaceItemStacks[2] == null) {
+				this.furnaceItemStacks[2] = itemstack.copy();
+			} else if (this.furnaceItemStacks[2].getItem() == itemstack.getItem()) {
+				this.furnaceItemStacks[2].stackSize += itemstack.stackSize;
+			}
+
+			this.furnaceItemStacks[3].stackSize--;
+			if(this.furnaceItemStacks[3].stackSize == 0){
+				this.furnaceItemStacks[3]=null;
+			}
+			furnaceItemStacks[0]=new ItemStack(j.getItem(),1,j.getItemDamage()+ (isOil(furnaceItemStacks[0])?3:1));
+			if(furnaceItemStacks[0].getItemDamage()>=furnaceItemStacks[0].getMaxDamage()){
+				--this.furnaceItemStacks[0].stackSize;
+				this.furnaceItemStacks[0]=new ItemStack(ACItems.DistilledBottle);
+				if(this.furnaceItemStacks[0].stackSize == 0){
+					this.furnaceItemStacks[0] = null;
+				}
+			}
+		}
+	}
+	
+	private boolean isOil(ItemStack itemStack) {
+		for(int i=40;i<66;i=i+2){
+			if(DistillerRecipes.RecipesList[i].getItem()==itemStack.getItem())return true;
+		}
+		return false;
+	}
+
+	public static int getItemBurnTime(ItemStack itemstack){
+		if(itemstack == null){
+			return 0;
+		}else{
+			Item item = itemstack.getItem();
+			if(item == Items.coal){
+				return 1000;
+			}
+			if(item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air){
+				Block block = Block.getBlockFromItem(item);				
+			}
+			
+			return GameRegistry.getFuelValue(itemstack);
+		}
+	}
+
+	public static boolean isItemFuel(ItemStack itemstack){
+		return getItemBurnTime(itemstack) > 0;
+	}
+	@Override
+	public void openInventory(EntityPlayer player) {
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		return false;
+	}
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		
+	}
+
+	@Override
+	public String getName() {
+		return "";
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return null;
+	}
+
+	
+
+	
+		
+
+	
+
+
+	
+
+
+}

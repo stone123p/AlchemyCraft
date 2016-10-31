@@ -1,0 +1,257 @@
+ package com.hzy.alchemycraft.gui;
+
+import org.lwjgl.opengl.GL11;
+import com.hzy.alchemycraft.AlchemyCraft;
+import com.hzy.alchemycraft.blocks.ACBlocks;
+
+import com.hzy.alchemycraft.handler.LibHandler;
+import com.hzy.alchemycraft.items.ACItems;
+import com.hzy.alchemycraft.items.ItemPotion;
+import com.hzy.alchemycraft.recipes.AlchemyRecipes;
+import com.hzy.alchemycraft.recipes.DistillerRecipes;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+
+public class GuiACBook extends GuiScreen{
+
+	private ItemStack[] st1 = {
+			new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),new ItemStack(Items.iron_ingot),
+			new ItemStack(Items.brewing_stand),null,new ItemStack(Items.iron_ingot),
+			new ItemStack(Item.getItemFromBlock(ACBlocks.Tripod)),null,null,
+			new ItemStack(Item.getItemFromBlock(ACBlocks.Distiller))};
+	
+	private ItemStack[] st2 = {
+			null,new ItemStack(Blocks.double_wooden_slab),null,
+			new ItemStack(Blocks.glass),null,new ItemStack(Blocks.glass),
+			new ItemStack(Blocks.glass),new ItemStack(Blocks.glass),new ItemStack(Blocks.glass),
+			new ItemStack(ACItems.DistilledBottle)};
+	
+	private ItemStack[] st3 = {
+			new ItemStack(Blocks.quartz_block),new ItemStack(Items.dye,1,5),new ItemStack(Blocks.quartz_block),
+			new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),
+			new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),new ItemStack(Blocks.obsidian),
+			new ItemStack(Item.getItemFromBlock(ACBlocks.AlchemyTable))};
+	
+	private ItemStack[] st4 = {
+			new ItemStack(Items.brick),null,new ItemStack(Items.brick),
+			new ItemStack(Items.brick),new ItemStack(Items.brick),new ItemStack(Items.brick),
+			new ItemStack(Items.brick),new ItemStack(Items.blaze_powder),new ItemStack(Items.brick),
+			new ItemStack(Item.getItemFromBlock(ACBlocks.Diffuser))};
+	
+	private ItemStack[] st5 = {
+			null,null,null,
+			new ItemStack(Items.iron_ingot),new ItemStack(Items.clay_ball),new ItemStack(Items.iron_ingot),
+			new ItemStack(Items.iron_ingot),new ItemStack(Items.bowl),new ItemStack(Items.iron_ingot),
+			new ItemStack(Item.getItemFromBlock(ACBlocks.Tripod))};
+	
+	Minecraft mc=Minecraft.getMinecraft();
+	private String[] RomanNumerals={"I","II","III","IV","V","VI","VII","VIII","IX","X"};
+	private NBTTagCompound nbt = new NBTTagCompound();
+	private int guiWidth = 148;
+	private int guiHeight =182;
+	private int tabWidth = 27;
+	private int tabHeight =23;
+	
+	
+	private int Mainpage=0;
+	private int pageNumber=0;
+	private int MaxPageNumber=4;
+	
+	@Override
+	public void drawScreen(int x, int y, float ticks){
+		super.drawScreen(x, y, ticks);
+		
+		int guiX = (width-guiWidth)/2;
+		int guiY = (height-guiHeight)/2;
+		GL11.glColor4f(1, 1, 1, 1);
+		drawDefaultBackground();
+		mc.renderEngine.bindTexture(new ResourceLocation(AlchemyCraft.MODID+":textures/guis/AlchemyBook.png"));
+		drawTexturedModalRect(guiX, guiY, 0, 0 , guiWidth, guiHeight);
+		
+		drawTexturedModalRect(guiX+135, guiY+20, 58, 188+(Mainpage==0?32:0) ,27, 23);
+		drawTexturedModalRect(guiX+135, guiY+50, 58, 188+(Mainpage==1?32:0) ,27, 23);
+		drawTexturedModalRect(guiX+135, guiY+80, 58, 188+(Mainpage==2?32:0) ,27, 23);
+		drawTexturedModalRect(guiX+135, guiY+110, 58, 188+(Mainpage==3?32:0) ,27, 23);
+		
+		drawTexturedModalRect(guiX+140, guiY+23, 96, 191 ,16, 16);
+		drawTexturedModalRect(guiX+140, guiY+53, 119, 191 ,16, 16);	
+		drawTexturedModalRect(guiX+140, guiY+83, 145, 191 ,16, 16);
+		drawTexturedModalRect(guiX+140, guiY+113,172, 191 ,16, 16);
+		
+		drawTexturedModalRect(guiX+120, guiY+155, 3+(pageNumber==MaxPageNumber?23:0), 194 ,18, 11);
+		drawTexturedModalRect(guiX+15, guiY+155, 3+(pageNumber==0?23:0), 207 ,18, 11);
+		
+		if(Mainpage==0)SelectHerbs(guiX,guiY);
+		if(Mainpage==1)SelectDistill(guiX,guiY);
+		if(Mainpage==2)SelectAlchemy(guiX,guiY);
+		if(Mainpage==3)SelectDiffuser(guiX,guiY);
+		
+		RenderHelper.enableStandardItemLighting();
+	}
+	
+	
+
+	@Override
+	protected void mouseClicked(int x, int y, int button) {
+	//	super.mouseClicked(x, y, button);
+		int guiX = (width-guiWidth)/2;
+		int guiY = (height-guiHeight)/2;
+		if(guiX+135<=x&&x<=guiX+163&&guiY+23<=y&&y<=guiY+45){
+			MaxPageNumber=LibHandler.Herbs.length/3+1;
+			pageNumber=0;
+			Mainpage=0;
+		}
+		if(guiX+135<=x&&x<=guiX+163&&guiY+50<=y&&y<=guiY+72){
+			MaxPageNumber=DistillerRecipes.RecipesList.length/4+3;
+			pageNumber=0;
+			Mainpage=1;
+		}
+		if(guiX+135<=x&&x<=guiX+163&&guiY+77<=y&&y<=guiY+99){
+			MaxPageNumber=AlchemyRecipes.Recipes.length;
+			pageNumber=0;
+			Mainpage=2;
+		}
+		if(guiX+135<=x&&x<=guiX+163&&guiY+113<=y&&y<=guiY+113+22){
+			MaxPageNumber=1;
+			pageNumber=0;
+			Mainpage=3;
+		}
+		if(guiX+120<=x&&x<=guiX+138 && guiY+155<=y&&y<=guiY+166){
+			if(pageNumber<MaxPageNumber)pageNumber++;
+		}
+		
+		if(guiX+15<=x&&x<=guiX+33 &&guiY+155<=y&&y<=guiY+166){
+			if(pageNumber>0)pageNumber--;
+		}
+	}
+	
+
+	public void SelectHerbs(int x,int y){
+		fontRendererObj.drawSplitString("藥草學",x+60, y+15,116, 0);
+		for(int i=0;i<3;i++){
+			if(i+pageNumber*3<LibHandler.Herbs.length){
+				fontRendererObj.drawSplitString(StatCollector.translateToLocal("GuiBook.Name.con")+new ItemStack(LibHandler.Herbs[i+3*pageNumber]).getDisplayName(),x+40, y+30+40*i,116, 0);
+				fontRendererObj.drawSplitString(StatCollector.translateToLocal("GuiBook.Environment.con")+LibHandler.HerbsData[i+pageNumber*3],x+40, y+40+40*i,116, 3);
+				fontRendererObj.drawSplitString("象徵："+LibHandler.HerbsEmblem[i+pageNumber*3],x+40, y+50+40*i,116, 3);
+				GL11.glColor4f(1, 1, 1, 1);
+				mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(LibHandler.Herbs[i+3*pageNumber]), x+20,  y+30+40*i);
+				
+			}
+		}
+	}
+	public void SelectDistill(int x,int y){
+		String[] s={"所需設備：\n1.蒸餾器\n2.蒸餾瓶\n3.玻璃瓶\n\n蒸餾步驟：\n1.持蒸餾瓶對水源點擊右鍵以取的裝水的蒸餾瓶。\n2.將裝水的蒸餾瓶和配方材料用合成台合成出相對映的材料瓶\n3.將燃料、材料瓶、玻璃瓶放置於蒸餾器相對映的位置",
+					"蒸餾器之合成表：\n\n\n\n\n\n\n蒸餾瓶之合成表：","本生燈之合成表："};
+		fontRendererObj.drawString("蒸餾學",x+60, y+15,0x40404040);
+		fontRendererObj.drawSplitString(pageNumber>2?"蒸餾配方：":s[pageNumber], x+20, y+25, 116, 0);
+		
+		if(pageNumber==1){
+			DrawCraftingRecipes(st1, x+30, y+35);
+			DrawCraftingRecipes(st2, x+30, y+100);
+		}
+
+		if(pageNumber==2){
+			DrawCraftingRecipes(st5, x+30, y+35);
+		}
+		if(pageNumber>=3){
+			int i=(pageNumber-3)*2;
+			DrawPotionInformation(DistillerRecipes.RecipesList[i*2+1].getItem(),i,x+20,y+40);
+			if(pageNumber<MaxPageNumber)DrawPotionInformation(DistillerRecipes.RecipesList[i*2+3].getItem(),i+1,x+20,y+95);
+		}
+
+	}
+	public void SelectAlchemy(int x,int y){
+					   
+		fontRendererObj.drawString("煉金術",x+60, y+15,0x40404040);
+		
+		if(pageNumber==0){
+			fontRendererObj.drawSplitString("設備:\n煉金桌\n煉金桌之合成表：", x+20, y+25, 116, 0);
+			DrawCraftingRecipes(st3, x+30, y+65);
+		}
+		if(pageNumber>0){
+			
+			int i=(pageNumber-1);
+
+			fontRendererObj.drawSplitString(AlchemyRecipes.Recipes[i], x+20, y+15, 116, 0);
+			DrawAlchemyRecipes(AlchemyRecipes.AlchemyTableRecipes[i],x+30,y+80 );
+		}
+	}
+	private void SelectDiffuser(int x, int y) {
+		fontRendererObj.drawString("精油燈",x+60, y+15,0x40404040);
+		if(pageNumber==0){
+			fontRendererObj.drawSplitString("功能：將藥水揮發在空氣中，使周圍生物包括玩家獲得短暫的藥水效果。", x+20, y+25, 116, 0);
+			fontRendererObj.drawSplitString("使用方法：手持藥水對精油燈點右鍵。", x+20, y+65, 116, 0);
+			fontRendererObj.drawSplitString("精油燈之合成表：", x+20, y+95, 116, 0);
+			DrawCraftingRecipes(st4, x+30, y+105);
+		}
+		if(pageNumber==1){
+			fontRendererObj.drawSplitString("對象綁定：可指定精油燈能夠影響的族群。\n綁定方法：\n\n1.只對玩家有作用：持紅石對精油燈點右鍵\n 2.只對非玩家生物有作用：持螢光粉對精油燈點右鍵\n 3.清除綁定：持糖對精油燈點右鍵", x+20, y+25, 116, 0);
+		}
+		
+	}
+	public void DrawCraftingRecipes(ItemStack[] itemstack,int x,int y){
+	    net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
+		
+        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+        GL11.glEnable(GL11.GL_LIGHTING);
+        
+		for(int i =0;i<3;i++){
+			for(int j=0;j<3;j++){ 
+				if(itemstack[i+3*j] != null){
+					mc.getRenderItem().renderItemAndEffectIntoGUI(itemstack[i+3*j], x+i*18, y+j*18);
+					
+					 
+				}
+			}
+		}
+		mc.getRenderItem().renderItemAndEffectIntoGUI(itemstack[9], x+70, y+18);
+	
+		GL11.glDisable(32826);
+        GL11.glDisable(GL11.GL_COLOR_MATERIAL);
+	}
+	
+	public void DrawAlchemyRecipes(ItemStack[] itemstack,int x,int y){
+		net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
+		GL11.glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
+				
+		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+	   	GL11.glEnable(GL11.GL_LIGHTING);
+        mc.renderEngine.bindTexture(new ResourceLocation(AlchemyCraft.MODID,"textures/guis/guiLib.png"));
+        drawTexturedModalRect(x, y, 0, 20 , 80, 80);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(itemstack[0], x+30, y+26);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(itemstack[1], x+30, y+2);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(itemstack[2], x+30, y+53);
+        if(itemstack[3] !=null)mc.getRenderItem().renderItemAndEffectIntoGUI( itemstack[3], x+9	, y+16);
+        if(itemstack[4] !=null)mc.getRenderItem().renderItemAndEffectIntoGUI( itemstack[4], x+51, y+16);
+        
+        GL11.glDisable(32826);
+        GL11.glDisable(GL11.GL_COLOR_MATERIAL);
+	}
+	
+	public void DrawPotionInformation(Item potion,int potionIndex,int x,int y){
+		String Materials = "";
+		for(String e : LibHandler.getMaterials(potionIndex)){Materials+="\n  "+StatCollector.translateToLocal(e);}
+		
+		String data=
+				"藥水:"+StatCollector.translateToLocal(potion.getUnlocalizedName()+".name")+
+				"\n配方："+Materials+
+				"\n效果："+StatCollector.translateToLocal(ItemPotion.getEffects(potion).getEffectName())+"Level:"+RomanNumerals[ItemPotion.getEffects(potion).getAmplifier()];
+		
+		GL11.glColor4f(1, 1, 1, 1);
+		mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(potion),x,y);
+		fontRendererObj.drawSplitString(data, x+20, y, 116, 0);
+
+	}
+
+}

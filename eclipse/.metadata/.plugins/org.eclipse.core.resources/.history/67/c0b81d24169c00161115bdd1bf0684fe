@@ -1,0 +1,125 @@
+package com.hzy.alchemycraft.handler;
+
+import com.hzy.alchemycraft.blocks.ACBlocks;
+import com.hzy.alchemycraft.items.ACItems;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+public class LibHandler {
+
+
+	public static Object[][] Recipes={
+			/*0 初級治療藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Peacebloom),Item.getItemFromBlock(ACBlocks.Silverleaf)},
+			/*1 初級堅韌藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Peacebloom),Item.getItemFromBlock(ACBlocks.Earthroot),Item.getItemFromBlock(ACBlocks.Earthroot)},
+			/*2 初級敏捷藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Swiftthistle),Item.getItemFromBlock(ACBlocks.Silverleaf)},
+			/*3 初級防禦藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Silverleaf),Item.getItemFromBlock(ACBlocks.Silverleaf)},
+			/*4 初級力量藥劑*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Silverleaf),Item.getItemFromBlock(ACBlocks.Earthroot)},
+			/*5 初級隱形藥劑*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Silverleaf),Item.getItemFromBlock(ACBlocks.Fadeleaf)},
+			/*6 初級水肺藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Silverleaf),new ItemStack(ACItems.FishOilBottle.setContainerItem(Items.glass_bottle))},
+			/*7 初級夜視藥水*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.FishOilBottle.setContainerItem(Items.glass_bottle)),Item.getItemFromBlock(ACBlocks.Briarthorn)},
+			
+			/*8 治療藥水*/	 	{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Bruiseweed),Item.getItemFromBlock(ACBlocks.Briarthorn)},
+			/*9 堅韌藥水*/    	{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Bruiseweed),Item.getItemFromBlock(ACBlocks.Stranglekelp)},
+			/*10 敏捷藥水*/ 		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Goldthorn),Item.getItemFromBlock(ACBlocks.Stranglekelp)},
+			/*11 防禦藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.WildSteelbloom),Item.getItemFromBlock(ACBlocks.Stranglekelp)},
+			/*12 力量藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Kingsblood),Item.getItemFromBlock(ACBlocks.Earthroot)},
+			/*13 隱形藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(Blocks.brown_mushroom),Item.getItemFromBlock(ACBlocks.Silverleaf)},
+			/*14 水肺藥水*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.FishOilBottle.setContainerItem(Items.glass_bottle)),new ItemStack(ACItems.FishOilBottle.setContainerItem(Items.glass_bottle)),Item.getItemFromBlock(ACBlocks.Stranglekelp)},
+			/*15 夜視藥水*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.FishOilBottle.setContainerItem(Items.glass_bottle)),Item.getItemFromBlock(ACBlocks.Goldthorn)},
+			/*16 防火藥水*/     	{ACItems.FullDistilledBottle,new ItemStack(ACItems.FireOilBottle.setContainerItem(Items.glass_bottle)),Item.getItemFromBlock(ACBlocks.WildSteelbloom)},
+			/*17 淨化藥水*/		{ACItems.FullDistilledBottle,Items.milk_bucket,Item.getItemFromBlock(ACBlocks.Kingsblood)},
+			/*18 重生藥水*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.HealingPotion.setContainerItem(Items.glass_bottle)),Item.getItemFromBlock(ACBlocks.Goldthorn)},	
+			/*19 飛行藥水*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Stranglekelp),new ItemStack(Items.feather),Item.getItemFromBlock(ACBlocks.Goldthorn)},	
+			/*20 愛情藥水*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.PurifyPotion),new ItemStack(Blocks.red_flower),Item.getItemFromBlock(ACBlocks.Peacebloom)},
+			
+			/*21 迷幻之油*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.CorpseOilBottle.setContainerItem(Items.glass_bottle)),new ItemStack(ACItems.PoisonOilBottle.setContainerItem(Items.glass_bottle)),new ItemStack(ACItems.YinYangOilBottle)},
+			/*22 魚   油*/		{ACItems.FullDistilledBottle,Items.fish},	
+			/*23 屍   油*/		{ACItems.FullDistilledBottle,Items.bone,Items.rotten_flesh},
+			/*24 凋零之油1*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.CorpseOilBottle.setContainerItem(Items.glass_bottle)),Items.nether_wart,Item.getItemFromBlock(ACBlocks.Kingsblood)},
+			/*25 凋零之油2*/		{ACItems.FullDistilledBottle,new ItemStack(Items.skull, 1, 1)},
+			/*26 陰陽之油*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(Blocks.yellow_flower),Item.getItemFromBlock(Blocks.brown_mushroom)},
+			/*27 火焰之油1*/		{ACItems.FullDistilledBottle,Items.blaze_powder},
+			/*28 火焰之油2*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Cinderpearl)},
+			/*29 生長之油*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(ACBlocks.Bruiseweed),new ItemStack(Items.dye, 1, 15)},
+			/*20 轉換之油*/		{ACItems.FullDistilledBottle,new ItemStack(ACItems.YinYangOilBottle.setContainerItem(Items.glass_bottle)),Item.getItemFromBlock(ACBlocks.Mageroyal)},
+			/*31 冰霜之油*/		{ACItems.FullDistilledBottle,Item.getItemFromBlock(Blocks.ice),Item.getItemFromBlock(Blocks.snow)},
+			/*32 邪毒之油*/		{ACItems.FullDistilledBottle,Items.spider_eye,Items.poisonous_potato,new ItemStack(Items.fish,1,3),Item.getItemFromBlock(ACBlocks.Briarthorn)},
+			/*33 奪魂之油*/		{ACItems.FullDistilledBottle,Items.gunpowder,Items.gunpowder,Items.gunpowder,Items.gunpowder,Item.getItemFromBlock(ACBlocks.Peacebloom)},
+			
+		};
+
+
+		
+		public static String[][] Materials={
+			/*初級治療藥水*/	{"gui.Peacebloom_1.action","gui.Silverleaf_1.action"},
+			/*初級堅韌藥水*/ 	{"gui.Peacebloom_1.action","gui.Earthroot_2.action"},
+			/*初級敏捷藥水*/	{"gui.Swiftthistle_1.action","gui.Silverleaf_1.action"},
+			/*初級防禦藥水*/	{"gui.Silverleaf_2.action"},
+			/*初級力量藥劑*/	{"gui.Earthroot_1.action","gui.Silverleaf_1.action"},
+			/*初級隱形藥劑*/	{"gui.Silverleaf_1.action","gui.Fadeleaf_1.action"},
+			/*初級水肺藥水*/	{"gui.Silverleaf_1.action","gui.FishOil_1.action"},
+			/*初級夜視藥水*/	{"gui.FishOil_1.action","gui.Briarthorn_1.action"},
+			
+			/*治療藥水*/		{"gui.Bruiseweed_1.action","gui.Briarthorn_1.action"},
+			/*堅韌藥水*/		{"gui.Bruiseweed_1.action","gui.Stranglekelp_1.action"},
+			/*敏捷藥水*/  	{"gui.Goldthorn_1.action","gui.Stranglekelp_1.action"},
+			/*防禦藥水*/  	{"gui.WildSteelbloom_1.action","gui.Stranglekelp_1.action"},
+			/*力量藥水*/  	{"gui.Kingsblood_1.action","gui.Earthroot_1.action"},
+			/*隱形藥水*/  	{"gui.brown_mushroom_1.action","gui.Silverleaf_1.action"},
+			/*水肺藥水*/  	{"gui.FishOil_2.action","gui.Stranglekelp_1.action"},
+			/*夜視藥水*/  	{"gui.Goldthorn_1.action","gui.FishOil_1.action"},
+			/*防火藥水*/  	{"gui.FireOil_1.action","gui.WildSteelbloom_1.action"},
+			/*淨化藥水*/  	{"gui.milk_1.action","gui.Kingsblood_1.action"},
+			/*重生藥水*/  	{"gui.HealingPotion_1.action","gui.Goldthorn_1.action"},
+			/*飛行藥水*/		{"gui.Stranglekelp_1.action","gui.feather_1.action","gui.Goldthorn_1.action"},
+			/*愛情藥水*/		{"","",""},
+			
+			/*迷幻之油*/		{"gui.CorpseOil_1.action","gui.PoisonOil_1.action","gui.YinYangOil_1.action"},
+			/*魚   油*/  	{"gui.Fish_1.action"},
+			/*屍   油*/  	{"gui.bone_1.action","gui.rotten_flesh_1.action"},
+			/*凋零之油1*/		{"gui.CorpseOil_1.action","gui.nether_wart_1.action","gui.Kingsblood_1.action"},
+			/*凋零之油2*/		{"gui.WitherSkeletonHead_1.action"},
+			/*陰陽之油*/		{"gui.yellow_flower_1.action","gui.brown_mushroom_1.action"},
+			/*火焰之油1*/		{"gui.blaze_powder_1.action"},
+			/*火焰之油2*/		{"gui.Cinderpearl_1.action"},
+			/*生長之油*/		{"gui.Bruiseweed_1.action","gui.bonemeal_1.action"},
+			/*轉換之油*/		{"gui.YinYangOil_1.action","gui.Mageroyal_1.action"},
+			/*冰霜之油*/		{"gui.IceBlock_1.action","gui.SnowBlock_1.action"},
+			/*邪毒之油*/		{"gui.spider_eye_1.action","gui.poisonous_potato_1.action","gui.pufferfish_1.action","gui.Briarthorn_1.action"},
+			/*奪魂之油*/   	{"gui.gunpowder_4.action","gui.Peacebloom_1.action"}
+		};
+		
+		public static Block [] Herbs={
+				ACBlocks.Peacebloom,ACBlocks.Silverleaf,ACBlocks.Earthroot,ACBlocks.Mageroyal,
+				ACBlocks.Fadeleaf,ACBlocks.Briarthorn,ACBlocks.Swiftthistle,ACBlocks.Bruiseweed,
+				ACBlocks.WildSteelbloom,ACBlocks.Kingsblood,ACBlocks.Goldthorn,ACBlocks.Stranglekelp,
+				ACBlocks.Cinderpearl,Blocks.brown_mushroom,Blocks.red_flower,Blocks.yellow_flower,
+		};
+		public static String[] HerbsData={
+				"任何","任何","任何","高山(>80)",
+				"熱帶草原","熱帶草原","叢林","平原",
+				"高山(>80)","森林","熱帶草原","沼澤",
+				"沙漠","暗處","草原","草原"
+		};
+		public static final String[] HerbsEmblem = {
+				"安神","守護","力量","魔法",
+				"隱藏","能力","移動","治癒",
+				"守護 II","魔法 II","能力 II","移動 II",
+				"火焰","黑暗","愛情","光明"
+		};
+		public LibHandler(){
+
+		}
+		public static String[] getMaterials(int i){
+			return Materials[i];
+		}
+		public Object[] getRecipes(int i){
+			return Recipes[i];
+		}
+
+}

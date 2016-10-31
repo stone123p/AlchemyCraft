@@ -1,0 +1,16 @@
+package com.hzy.alchemycraft.recipes;
+
+import net.minecraft.init.Blocks;
+
+public class MaterialRecipes {
+	
+	public static String[]	Earth={"clay","stained_hardened_clay","dirt","sand","sandstone","gravel","cobblestone","stone","obsidian"};
+	public static String[] 	Wood={"brown_mushroom","red_mushroom","nether_wart","pumpkin_seeds","melon_seeds","apple","tallgrass","waterlily","vine","yellow_flower","red_flower","double_plant","cactus","reeds","sapling","leaves","log"};
+	public static String[]	Metal={"coal","quartz","iron_ingot","redstone","gunpowder","diamond","emerald"};
+	public static String[]	Organ={"sugar","string","web","wool","slime_ball","blaze_rod","ghast_tear","ender_pearl"};
+	public static String[]	Water={"snowball","snowball","ice","water","milk_bucket","lava"};
+	public MaterialRecipes(){
+		
+	}
+	
+}

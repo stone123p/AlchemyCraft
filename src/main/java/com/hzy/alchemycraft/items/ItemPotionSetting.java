@@ -1,0 +1,16 @@
+package com.hzy.alchemycraft.items;
+
+import com.hzy.alchemycraft.AlchemyCraft;
+
+import net.minecraft.item.Item;
+
+
+public class ItemPotionSetting extends ItemPotion{
+
+	public ItemPotionSetting(String potionName) {
+		super();
+		this.setCreativeTab(AlchemyCraft.alchemycraftTab);
+		this.setUnlocalizedName(potionName);
+	}
+
+}

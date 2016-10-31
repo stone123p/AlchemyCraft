@@ -1,0 +1,123 @@
+---- Minecraft Crash Report ----
+// Hi. I'm Minecraft, and I'm a crashaholic.
+
+Time: 2016/10/21 下午 6:17
+Description: Rendering Block Entity
+
+java.lang.NullPointerException: Rendering Block Entity
+	at net.minecraftforge.fluids.Fluid.<init>(Fluid.java:101)
+	at com.hzy.alchemycraft.renderer.RenderDiffuser.renderTileEntityAt(RenderDiffuser.java:32)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntityAt(TileEntityRendererDispatcher.java:142)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntity(TileEntityRendererDispatcher.java:117)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:698)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1369)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1111)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1107)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:380)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraftforge.fluids.Fluid.<init>(Fluid.java:101)
+	at com.hzy.alchemycraft.renderer.RenderDiffuser.renderTileEntityAt(RenderDiffuser.java:32)
+
+-- Block Entity Details --
+Details:
+	Name: TileEntityDiffuserBlock // com.hzy.alchemycraft.tileentity.TileEntityDiffuserBlock
+	Block type: ID #212 (tile.Diffuser // com.hzy.alchemycraft.blocks.Diffuser)
+	Block data value: 0 / 0x0 / 0b0000
+	Block location: World: (-336,4,1192), Chunk: (at 0,0,8 in -21,74; contains blocks -336,0,1184 to -321,255,1199), Region: (-1,2; contains chunks -32,64 to -1,95, blocks -512,0,1024 to -1,255,1535)
+	Actual block type: ID #212 (tile.Diffuser // com.hzy.alchemycraft.blocks.Diffuser)
+	Actual block data value: 0 / 0x0 / 0b0000
+Stacktrace:
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntityAt(TileEntityRendererDispatcher.java:142)
+	at net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher.renderTileEntity(TileEntityRendererDispatcher.java:117)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:698)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1369)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1283)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player247'/52, l='MpServer', x=-337.43, y=4.00, z=1192.70]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: -284.00,4.00,1377.00 - World: (-284,4,1377), Chunk: (at 4,0,1 in -18,86; contains blocks -288,0,1376 to -273,255,1391), Region: (-1,2; contains chunks -32,64 to -1,95, blocks -512,0,1024 to -1,255,1535)
+	Level time: 78853 game time, 78853 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 67 total; [EntitySlime['史莱姆'/5, l='MpServer', x=-416.94, y=4.00, z=1248.40], EntitySlime['史莱姆'/8, l='MpServer', x=-399.03, y=4.00, z=1210.09], EntityRabbit['兔子'/10, l='MpServer', x=-386.41, y=4.00, z=1207.31], EntitySlime['史莱姆'/31626, l='MpServer', x=-307.59, y=4.00, z=1240.59], EntitySlime['史莱姆'/11, l='MpServer', x=-397.41, y=4.91, z=1228.55], EntitySlime['史莱姆'/12, l='MpServer', x=-369.91, y=4.00, z=1203.78], EntitySlime['史莱姆'/13, l='MpServer', x=-390.84, y=4.31, z=1221.95], EntityRabbit['兔子'/15, l='MpServer', x=-361.34, y=4.00, z=1183.97], EntityRabbit['兔子'/16, l='MpServer', x=-377.81, y=4.00, z=1200.84], EntityRabbit['兔子'/17, l='MpServer', x=-371.78, y=4.00, z=1202.50], EntitySlime['史莱姆'/18, l='MpServer', x=-384.69, y=4.00, z=1218.09], EntitySlime['史莱姆'/19, l='MpServer', x=-374.13, y=4.00, z=1222.69], EntityRabbit['兔子'/20, l='MpServer', x=-368.28, y=4.00, z=1225.22], EntityRabbit['兔子'/21, l='MpServer', x=-375.09, y=4.00, z=1244.91], EntityItem['item.item.seeds'/22, l='MpServer', x=-355.53, y=5.00, z=1194.25], EntityItem['item.item.potato'/23, l='MpServer', x=-359.06, y=5.00, z=1195.16], EntityItem['item.item.potato'/24, l='MpServer', x=-355.81, y=5.00, z=1195.50], EntitySlime['史莱姆'/25, l='MpServer', x=-350.66, y=4.00, z=1219.81], EntityRabbit['兔子'/26, l='MpServer', x=-353.66, y=4.00, z=1240.44], EntitySlime['史莱姆'/27, l='MpServer', x=-339.00, y=4.00, z=1178.88], EntityRabbit['兔子'/28, l='MpServer', x=-351.60, y=4.19, z=1196.89], EntityRabbit['兔子'/29, l='MpServer', x=-350.75, y=4.00, z=1229.81], EntityRabbit['兔子'/31, l='MpServer', x=-331.47, y=4.00, z=1194.63], EntitySlime['史莱姆'/32, l='MpServer', x=-331.82, y=4.00, z=1212.96], EntityRabbit['兔子'/33, l='MpServer', x=-327.65, y=4.22, z=1219.66], EntitySlime['史莱姆'/35, l='MpServer', x=-301.09, y=4.00, z=1218.72], EntitySlime['史莱姆'/36, l='MpServer', x=-291.30, y=5.15, z=1236.47], EntitySheep['羊'/37, l='MpServer', x=-304.94, y=4.00, z=1254.88], EntityZombie['僵尸'/53, l='MpServer', x=-339.31, y=2.00, z=1170.44], EntitySlime['史莱姆'/54, l='MpServer', x=-365.75, y=4.07, z=1188.17], EntitySlime['史莱姆'/55, l='MpServer', x=-347.75, y=4.22, z=1156.28], EntityWitch['女巫'/56, l='MpServer', x=-344.16, y=9.00, z=1163.94], EntityZombie['僵尸'/57, l='MpServer', x=-346.31, y=4.02, z=1156.28], EntitySlime['史莱姆'/58, l='MpServer', x=-347.25, y=3.15, z=1157.47], EntitySlime['史莱姆'/59, l='MpServer', x=-383.57, y=4.14, z=1166.64], EntitySlime['史莱姆'/60, l='MpServer', x=-366.78, y=4.00, z=1183.41], EntitySlime['史莱姆'/61, l='MpServer', x=-371.50, y=4.00, z=1156.34], EntitySlime['史莱姆'/62, l='MpServer', x=-329.44, y=5.00, z=1159.25], EntitySlime['史莱姆'/63, l='MpServer', x=-328.59, y=5.00, z=1167.84], EntitySlime['史莱姆'/64, l='MpServer', x=-330.74, y=5.40, z=1166.69], EntitySlime['史莱姆'/65, l='MpServer', x=-323.17, y=4.94, z=1153.94], EntityRabbit['兔子'/66, l='MpServer', x=-345.38, y=4.00, z=1139.72], EntityRabbit['兔子'/67, l='MpServer', x=-392.25, y=4.00, z=1170.28], EntityItem['item.item.carrots'/68, l='MpServer', x=-320.13, y=5.00, z=1137.63], EntitySkeleton['骷髅'/69, l='MpServer', x=-333.19, y=5.00, z=1151.75], EntityPlayerSP['Player247'/52, l='MpServer', x=-337.43, y=4.00, z=1192.70], EntityRabbit['兔子'/71, l='MpServer', x=-297.81, y=4.00, z=1178.22], EntityRabbit['兔子'/72, l='MpServer', x=-389.94, y=4.00, z=1155.66], EntityCreeper['爬行者'/73, l='MpServer', x=-372.38, y=5.00, z=1145.88], EntitySlime['史莱姆'/74, l='MpServer', x=-376.53, y=4.00, z=1149.97], EntityItem['item.item.carrots'/75, l='MpServer', x=-314.22, y=5.00, z=1137.84], EntityRabbit['兔子'/76, l='MpServer', x=-305.56, y=4.00, z=1149.00], EntitySlime['史莱姆'/77, l='MpServer', x=-320.94, y=5.00, z=1139.56], EntitySlime['史莱姆'/78, l='MpServer', x=-322.69, y=4.00, z=1152.69], EntitySlime['史莱姆'/79, l='MpServer', x=-307.91, y=4.00, z=1148.31], EntitySlime['史莱姆'/80, l='MpServer', x=-308.33, y=4.91, z=1138.23], EntitySlime['史莱姆'/81, l='MpServer', x=-336.94, y=4.00, z=1127.09], EntitySlime['史莱姆'/82, l='MpServer', x=-323.39, y=4.93, z=1132.50], EntitySlime['史莱姆'/83, l='MpServer', x=-374.81, y=4.00, z=1129.81], EntitySlime['史莱姆'/84, l='MpServer', x=-372.84, y=4.14, z=1120.68], EntitySlime['史莱姆'/85, l='MpServer', x=-362.09, y=4.40, z=1116.40], EntityItem['item.item.carrots'/86, l='MpServer', x=-319.31, y=5.00, z=1135.75], EntitySlime['史莱姆'/87, l='MpServer', x=-271.01, y=4.55, z=1162.24], EntitySlime['史莱姆'/92, l='MpServer', x=-288.78, y=4.00, z=1123.03], EntitySlime['史莱姆'/93, l='MpServer', x=-261.19, y=4.00, z=1117.16], EntitySlime['史莱姆'/96, l='MpServer', x=-264.15, y=5.07, z=1127.94], EntitySlime['史莱姆'/9854, l='MpServer', x=-412.86, y=4.16, z=1209.80]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:383)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2645)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:401)
+	at net.minecraft.client.main.Main.main(Main.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:26)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Mac OS X (x86_64) version 10.11.5
+	Java Version: 1.8.0_91, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 550733024 bytes (525 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.19 Powered by Forge 11.15.1.1902 4 mods loaded, 4 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	Forge{11.15.1.1902} [Minecraft Forge] (forgeSrc-1.8.9-11.15.1.1902-1.8.9.jar) 
+	UCHIJAAAA	alchemycraft{1.3.2} [AlchemyCraft] (bin) 
+	Loaded coremods (and transformers): 
+	Launched Version: 1.8.9
+	LWJGL: 2.9.2
+	OpenGL: NVIDIA GeForce GT 650M OpenGL Engine GL version 2.1 NVIDIA-10.10.10 310.42.25f01, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because ARB_framebuffer_object is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: No
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-3615QM CPU @ 2.30GHz

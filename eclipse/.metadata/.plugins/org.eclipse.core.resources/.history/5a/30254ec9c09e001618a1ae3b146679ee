@@ -1,0 +1,81 @@
+package com.hzy.alchemycraft.recipes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+public class ConvertRecipes {
+	public static String[] element=new String[93];	
+	public static void ConvertRecipe(){
+		
+		
+	}
+	public static void SetElements(){
+		element[3]="Lithium";
+		element[6]="Coal";//item
+		element[13]="Aluminum";
+		element[15]="Glowstone";//dust
+		element[16]="Sulfur";//dust
+		element[22]="Titanium";
+		element[23]="Vanadium";
+		element[24]="Chromium";
+		element[25]="Manganese";
+		element[26]="Iron";
+		element[27]="Cobalt";
+		element[28]="Nickel";
+		element[29]="Copper";
+		element[30]="Zinc";
+		element[39]="Yttrium";
+		element[42]="Molybdenum";
+		element[50]="Tin";
+		element[46]="Palladium";
+		element[47]="Silver";
+		element[74]="Tungsten";
+		element[76]="Osmium";
+		element[77]="Iridium";
+		element[78]="Platinum";
+		element[79]="Gold";
+		element[82]="Lead";
+		element[83]="Bismuth";
+		element[92]="Uranium";
+	}
+	public static int getElementIndex(ItemStack itemStack){
+		SetElements();
+		String ElementName=new String(itemStack.getUnlocalizedName());
+		String M="";
+		
+		int j=-1;
+		for(int i=0;i<element.length;i++){
+			if(element[i] ==null)element[i]="XXX";
+			M=element[i].toLowerCase();
+			if(ElementName.toLowerCase().indexOf(M)!=-1){
+				j=i;
+				break;
+			}
+		}
+		if(itemStack.getItem()==Items.glowstone_dust)j=15;
+		if(itemStack.getItem()==Items.coal)j=6;
+		return j;
+	}
+	public static ItemStack getFinElement(int i, String type){
+		SetElements();
+		String M="";
+		M=element[i];
+		if(i<element.length){
+			List<ItemStack> FinElementList = OreDictionary.getOres(type.concat(M));
+			if(!FinElementList.isEmpty()){
+				return FinElementList.get(0).copy();
+			}
+			if(I.concat(M).equals("itemCoal"))return new ItemStack(Items.coal);
+		}
+		return null;
+	}
+	public String getElementType(ItemStack itemStack) {
+		String ElementName=new String(itemStack.getUnlocalizedName());
+		for()
+		return null;
+	}
+}

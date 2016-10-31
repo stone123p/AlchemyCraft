@@ -1,0 +1,7 @@
+package com.hzy.alchemycraft.items;
+
+import net.minecraft.item.Item;
+
+public class PotionDistilledBottle extends Item {
+
+}

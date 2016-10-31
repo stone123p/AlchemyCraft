@@ -1,0 +1,11 @@
+package com.hzy.alchemycraft.items;
+
+import net.minecraft.item.Item;
+
+public class NuggetSetting extends Item {
+
+	public NuggetSetting(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

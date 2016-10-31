@@ -1,0 +1,75 @@
+package com.hzy.alchemycraft.recipes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+public class ConvertRecipes {
+	public static String[] element=new String[93];	
+	public static void ConvertRecipe(){
+		
+		
+	}
+	public static void SetElements(){
+		element[3]="ingot,Lithium";
+		element[6]="item,Coal";
+		element[13]="ingot,Aluminum";
+		element[15]="dust,Glowstone";
+		element[16]="dust,Sulfur";
+		element[22]="ingot,Titanium";
+		element[23]="ingot,Vanadium";
+		element[24]="ingot,Chromium";
+		element[25]="ingot,Manganese";
+		element[26]="ingot,Iron";
+		element[27]="ingot,Cobalt";
+		element[28]="ingot,Nickel";
+		element[29]="ingot,Copper";
+		element[30]="ingot,Zinc";
+		element[39]="ingot,Yttrium";
+		element[42]="ingot,Molybdenum";
+		element[50]="ingot,Tin";
+		element[46]="ingot,Palladium";
+		element[47]="ingot,Silver";
+		element[74]="ingot,Tungsten";
+		element[76]="ingot,Osmium";
+		element[77]="ingot,Iridium";
+		element[78]="ingot,Platinum";
+		element[79]="ingot,Gold";
+		element[82]="ingot,Lead";
+		element[83]="ingot,Bismuth";
+		element[92]="ingot,Uranium";
+	}
+	public static int getElementIndex(ItemStack itemStack){
+		SetElements();
+		String ElementName=new String(itemStack.getUnlocalizedName());
+		String I="",M="";
+		
+		int j=-1;
+		for(int i=0;i<element.length;i++){
+			if(element[i] ==null)element[i]="XXX,XXX";
+			I=element[i].split(",")[0].toLowerCase();
+			M=element[i].split(",")[1].toLowerCase();
+			if(ElementName.toLowerCase().indexOf(I)!=-1 && ElementName.toLowerCase().indexOf(M)!=-1)j=i;
+		}
+		if(itemStack.getItem()==Items.glowstone_dust)j=15;
+		if(itemStack.getItem()==Items.coal)j=6;
+		return j;
+	}
+	public static ItemStack getFinElement(int i){
+		SetElements();
+		String I="",M="";
+		I=element[i].split(",")[0];
+		M=element[i].split(",")[1];
+		if(i<element.length){
+			List<ItemStack> FinElementList = OreDictionary.getOres(I.concat(M));
+			if(!FinElementList.isEmpty()){
+				return FinElementList.get(0).copy();
+			}
+			if(I.concat(M).equals("itemCoal"))return new ItemStack(Items.coal);
+		}
+		return null;
+	}
+}
